@@ -12,8 +12,12 @@
             </div>
             <div class="form-group">
                 <label for=""> Enter Password: </label>
-                <input class="form-control" type="text" name="password" required>
+                <input class="form-control" type="password" name="password" required>
             </div>
+            <div class="form-group">
+                <a href="../reset_password/forgot_password.php">Forgot password?</a>
+            </div>
+
 
         </div>
 

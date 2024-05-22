@@ -1,6 +1,5 @@
 <?php
-
-    include("../account_handler/userList.php");
+    include_once "../account_handler/userList.php";
 
     
     function checkUser($email, $user_name){
@@ -8,7 +7,6 @@
         // if(isset($_SESSION["userList"])){
         //     return true;
         // }
-
         foreach($_SESSION["userList"] as $users){
             if($users['Email'] == $email && $users['Username'] == $user_name){
                 return false;
@@ -16,6 +14,17 @@
         }
         return true;
     }
+    
+    //used in forgot_password.inc.php
+    function getUserID($email){
+        foreach($_SESSION["userList"] as $userID => $array){
+            if($array['Email'] == $email){
+                return $userID;
+            }
+        }
+        return null;
+    }
+    
     
     
   

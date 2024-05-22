@@ -1,8 +1,5 @@
 <?php
-
-include("profileList.php");
-session_start();
-
+include_once "profileList.php"; // needed for addUser()
 
 if(!isset($_SESSION["userList"])) {
     $_SESSION["userList"] = array();
@@ -17,6 +14,8 @@ function addUser($user_name, $email, $password){
         'Username' => $user_name,
         'Email' => $email,
         'Password' => $password,
+        'Reset_Token' => "",
+        'Reset_Token_Expires' => "",
     );
 
     addNewProfile($_SESSION["userCount"]); //can be seen at profileList.php
