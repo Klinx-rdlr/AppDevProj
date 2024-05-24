@@ -24,12 +24,8 @@
         }
         return null;
     }
-    
-    
-    
-  
-    //Series of checks, to validate user's input
-    function signupUser($user_name, $email, $password, $re_password){
+
+    function signUpTempUser($user_name, $email, $password, $re_password, $verifyCode){
         if(invalidUid($user_name) == false){
             header("location: signin.php?error=invalidusername");
             exit();
@@ -47,7 +43,7 @@
             exit();
         }
 
-        addUser($user_name, $email, $password); //can be seen at userList.php
+        tempAddUser($user_name, $email, $password, $verifyCode); //can be seen at userList.php
         return true;
     }
 

@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $token_hash = hash("sha256", $token);
     $expiry = date("Y-m-d H:i:s", time() + 60 * 2);
 
-    $result = userResetPassword($email, $token_hash, $expiry); //can be seen at signin_functions.php
+    $result = userResetPassword($email, $token_hash, $expiry); 
     if($result){
 
         $mail = require __DIR__ ."../../mailer.php";
@@ -16,8 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $mail->addAddress($email);
         $mail->setSubject = "Password Reset";
         $mail->Body =  <<<END
-
-        Click <a href="http://localhost/appdevproj/reset_password/reset_password.php?token=$token"> Click Here </a>
+        <a href="http://localhost/appdevproj/reset_password/reset_password.php?token=$token"> Click Here </a>
         to reset your password.
         
         END;
