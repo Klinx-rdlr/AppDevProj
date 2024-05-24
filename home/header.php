@@ -47,8 +47,16 @@
                 <?php
                if(isset($_SESSION["userID"])){
                 echo '<button onclick="location.href = \'../profile/profile.php\';"> PROFILE </button>';
+                echo '<button onclick="location.href = \'../profile/profile.php\';"> CART </button>';
                 echo '<button onclick="location.href = \'../log_in/logout.inc.php\';"> LOGOUT </button>';
-             } else {
+             } elseif(isset($_SESSION["adminID"])){
+                if($_SESSION["adminID"] == 1){
+                echo '<button onclick="location.href = \'../profile/profile.php\';"> SETTINGS </button>';
+                echo '<button onclick="location.href = \'../profile/profile.php\';"> REPORTS </button>';
+                echo '<button onclick="location.href = \'../log_in/logout.inc.php\';"> LOGOUT </button>';
+                }
+             }
+             else {
                  echo '<button onclick="location.href = \'../sign_in/signin.php\';"> SIGN IN </button>';
                  echo '<button onclick="location.href = \'../log_in/login.php\';"> LOG IN </button>';
              }             

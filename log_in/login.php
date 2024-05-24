@@ -2,7 +2,7 @@
 
 <div class="logIN card" style="width: 400px">
     <div class="card-header">
-        <h3> Log In</h3>
+        <h3 class="text-center"> Log In</h3>
     </div>
     <form action="login.inc.php" method="post">
         <div class="card-body">
@@ -17,10 +17,16 @@
             <div class="form-group">
                 <a href="../reset_password/forgot_password.php">Forgot password?</a>
             </div>
-        </div>
+    </form>
+    <div class="form-group">
+        <button class="btn btn-block btn-dark" onclick="location.href = '../admin_login/admin_login.php'">
+            Log in as Admin
+        </button>
+    </div>
+</div>
 
-        <div class="card-footer">
-            <?php    
+<div class=" card-footer">
+    <?php    
              if(isset($_GET["error"])) {
                         if($_GET["error"] == "status1") {
                              echo '<p class="text-center mb-2" style="margin: 0px; color: red"> Email Address Not Found</p>';
@@ -30,9 +36,9 @@
                         }
                       } 
             ?>
-            <input class="btn btn-block btn-primary" type="submit" value="submit">
-        </div>
-    </form>
+    <input class="btn btn-block btn-primary" type="submit" value="Log In">
+</div>
+</form>
 </div>
 
 </div
