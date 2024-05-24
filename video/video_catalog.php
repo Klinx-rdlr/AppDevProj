@@ -15,7 +15,8 @@
             new Video($_POST['title'],
                       $_POST['genre'],
                       $_POST['year'],
-                      $_POST['copies']
+                      $_POST['copies'],
+                      $_POST['type']
             );
 
         }
@@ -39,6 +40,12 @@
         Genre: <input type="text" id="genre" name="genre" required>
         Year Released: <input type="text" id="year" name="year" minlength='4' maxlength='4' required >
         No. of Copies: <input type="number" id="copies" name="copies" min='1' required>
+        CD Type:
+        <select name="type" id="type" required>
+            <option value="DVD">DVD</option>
+            <option value="Blu-ray">Blu-ray</option>
+            <option value="Digital">Digital</option>
+        </select>
         <input type="submit" value="Add Video">
       
     </form>
@@ -57,6 +64,7 @@
                 <td> <?php echo $videos->get_genre(); ?> </td>
                 <td> <?php echo $videos->get_release_year(); ?> </td>
                 <td> <?php echo $videos->get_copies(); ?> </td>
+                <td> <?php echo $videos->get_type(); ?> </td>
             </tr>
         <?php endforeach; ?>
         </table>

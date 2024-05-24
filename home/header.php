@@ -36,7 +36,7 @@
             <div class="home d-flex" style="margin-right: 400px">
                 <a href="../home/index.php" class="head mr-4"> HOME </a>
                 <a href="" class="head mr-4"> CATEGORIES </a>
-                <a href="" style="" class="head"> VIDEO </a>
+                <a href="../video/video_catalog.php" style="" class="head"> VIDEO </a>
             </div>
             <div class="search" style="margin-right: 400px">
                 <input type="text" placeholder="search video here..">

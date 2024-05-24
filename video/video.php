@@ -3,14 +3,15 @@
         private $title; 
         private $genre; 
         private $release_year;
-      
         private $copies; 
+        private $type;
         
-        public function __construct($title, $genre, $release_year, $copies) {
+        public function __construct($title, $genre, $release_year, $copies, $type) {
             $this->title = $title;
             $this->genre = $genre;
             $this->release_year = $release_year; 
             $this->copies = $copies;
+            $this->type = $type;
         }
 
         public function get_title() {
@@ -29,6 +30,10 @@
             return $this->copies; 
         }
 
+        public function get_type() {
+            return $this->type;
+        }
+
         public function set_title($title) {
             $this->title = $title;
         }
@@ -38,11 +43,15 @@
         }
 
         public function set_release_year($release_year) {
-            return $this->release_year = $release_year;
+            $this->release_year = $release_year;
         }
 
         public function set_copies($copies) {
-            return $this->copies = $copies;
+            $this->copies = $copies;
+        }
+
+        public function set_type($type) {
+            $this->type = $type;
         }
     }
 ?>

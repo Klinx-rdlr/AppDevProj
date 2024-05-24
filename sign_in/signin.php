@@ -12,15 +12,15 @@
             </div>
             <div class="form-group">
                 <label for=""> Email: </label>
-                <input class="form-control" type="text" name="email" required>
+                <input class="form-control" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" required>
             </div>
             <div class="form-group">
                 <label for=""> Password: </label>
-                <input class="form-control" type="text" name="password" required>
+                <input class="form-control" type="password" name="password" required>
             </div>
             <div class="form-group">
                 <label for=""> Re-Enter Password: </label>
-                <input class="form-control" type="text" name="re-password" required>
+                <input class="form-control" type="password" name="re-password" required>
             </div>
             <?php
                 if (isset($_GET["error"]) && $_GET["error"] == "none") {
