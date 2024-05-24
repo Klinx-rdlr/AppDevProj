@@ -17,8 +17,6 @@
             <div class="form-group">
                 <a href="../reset_password/forgot_password.php">Forgot password?</a>
             </div>
-
-
         </div>
 
         <div class="card-footer">
