@@ -51,7 +51,7 @@ function getUserToken($token){
                         } 
                       } 
             ?>
-            <input class="btn btn-block btn-primary" type="submit" value="submit">
+            <input class="btn btn-block btn-primary" type="submit" value="Reset">
         </div>
     </form>
 </div>

@@ -21,7 +21,7 @@ $user = $_SESSION["userTempList"];
             </div>
         </div>
         <div class="card-footer">
-            <input type="submit" class="btn btn-block btn-primary" value="Submit">
+            <input type="submit" class="btn btn-block btn-primary" value="Continue">
         </div>
     </form>
 </div>

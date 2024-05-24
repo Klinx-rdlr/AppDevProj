@@ -29,7 +29,7 @@
                 ?>
         </div>
         <div class="card-footer">
-            <input class="btn btn-block btn-primary" type="submit" value="submit">
+            <input class="btn btn-block btn-primary" type="submit" value="Sign In">
         </div>
     </form>
 </div>
