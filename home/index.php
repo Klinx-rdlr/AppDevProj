@@ -11,7 +11,7 @@
         switch ($search_criteria) {
             case "title":
                 foreach($_SESSION['video_collection'] as $video) {
-                    if (strtolower($video->get_title()) == strtolower($search_value)) {
+                    if (strpos(strtolower($video->get_title()), strtolower($search_value)) !== false) {
                         $search_results[] = $video;
                     }
                 }
@@ -25,18 +25,21 @@
                 break;
             case "genre":
                 foreach($_SESSION['video_collection'] as $video) {
-                    if ($video->get_genre() == $search_value) {
+                    if (strpos(strtolower($video->get_genre()), strtolower($search_value)) !== false) {
                         $search_results[] = $video;
                     }
                 }
                 break;
             case "director":
                 foreach($_SESSION['video_collection'] as $video) {
-                    if ($video->get_director() == $search_value) {
+                    if (strpos(strtolower($video->get_director()), strtolower($search_value)) !== false) {
                         $search_results[] = $video;
                     }
                 }
                 break;
+            // case "default":
+            //     $search_results = $_SESSION['video_collection'];
+            //     break;
             
         }
 
