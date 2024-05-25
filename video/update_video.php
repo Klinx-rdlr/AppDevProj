@@ -10,6 +10,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["action"] == "update") {
         $index = $_POST["index"];
         $_SESSION["video_collection"][$index]->set_title($_POST["title"]);
+        $_SESSION["video_collection"][$index]->set_director($_POST["director"]);
         $_SESSION["video_collection"][$index]->set_genre($_POST["genre"]);
         $_SESSION["video_collection"][$index]->set_release_year($_POST["year"]);
         $_SESSION["video_collection"][$index]->set_copies($_POST["copies"]);
@@ -41,6 +42,8 @@
         
         Title: <input type="text" id="title" name="title" required
             value="<?php echo $video->get_title();?>">
+        Director: <input type="text" id="director" name="director" required="required"
+            value="<?php echo $video->get_director();?>">
         Genre: <input type="text" id="genre" name="genre" required
             value="<?php echo $video->get_genre();?>">
         Year Released: <input type="text" id="year" name="year" minlength='4' maxlength='4' required
