@@ -4,9 +4,10 @@ include_once "../home/header.php";
 include_once "profile_functions.php";
 
 $userProfile = getUserProfile();
+$userPayment = getUserPayments();
+$PaymentType =  $userPayment['Payment_Option']['Payment_Type'];
 
 ?>
-
 <?php
     if(getProfileStatus() == 0){
     echo<<<EOT
@@ -16,7 +17,9 @@ $userProfile = getUserProfile();
     </div>
     EOT;
     }else{
-        $fullname = getProfileFullname();
+        $lastname = getProfileLastname();
+        $middlename = getProfileMiddlename();
+        $firstname = getProfileFirstname();
         $address = getProfileAddress();
         $phoneNumber = getProfilePhone();
         $birthday = getProfileBirthday();    
@@ -27,7 +30,14 @@ $userProfile = getUserProfile();
     </div>
     <div class="card-body">
         <div class="form-group">
-            <p> Fullname: $fullname </p>
+            <p> First Name: $firstname </p>
+            <p> First Name: $userPayment </p>
+</div>
+<div class="form-group">
+            <p> Last Name: $lastname</p>
+</div>
+<div class="form-group">
+            <p> Middle Name: $middlename </p>
 </div>
 <div class="form-group">
     <p> Address: $address </p>
@@ -39,7 +49,12 @@ $userProfile = getUserProfile();
     <p> Birthday: $birthday </p>
 </div>
 </div>
+  
+<div class="card-footer">
+<button class="btn btn-block btn-primary" onclick="location.href='editProfile.php'"> Edit Profile </button>
 </div>
+        </div>
 EOT;
+
 }
 ?>

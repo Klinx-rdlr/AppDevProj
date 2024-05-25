@@ -1,22 +1,41 @@
     <?php
 
-    include_once "../account_handler/profileList.php";
-
     function getUserProfile() {
         if (isset($_SESSION["profileList"][$_SESSION["userID"]])) {
             return $_SESSION["profileList"][$_SESSION["userID"]];
         } else {
             return null; 
-        }
+        }   
     }
+
+    function getUserPayments() {
+        if (isset($_SESSION["profileList"][$_SESSION["userID"]]['Payment_Option'])) {
+            return $_SESSION["profileList"][$_SESSION["userID"]]['Payment_Option'];
+        } else {
+            return null; 
+        }   
+    }
+
+
+
     function getProfileStatus(){
         $profile = getUserProfile();
         return $profile ? $profile['Status'] : "Missing";
     }
     
-    function getProfileFullname(){
+    function getProfileLastname(){
         $profile = getUserProfile();
-        return $profile ? $profile['Fullname'] : "Missing";
+        return $profile ? $profile['Last Name'] : "Missing";
+    }
+
+    function getProfileMiddlename(){
+        $profile = getUserProfile();
+        return $profile ? $profile['Middle Name'] : "Missing";
+    }
+
+    function getProfileFirstname(){
+        $profile = getUserProfile();
+        return $profile ? $profile['First Name'] : "Missing";
     }
     
     function getProfileAddress(){

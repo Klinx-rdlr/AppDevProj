@@ -1,5 +1,6 @@
 <?php
     session_start();
+    define('BASE_URL', 'http://localhost/appdevproj/');
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-    <link rel="stylesheet"
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>home/header.css">
+    <link rel=" stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -33,12 +35,12 @@
 
         <div class="nav-container d-flex justify-content-center align-items-center"
             style="width: 100%; border: 2px solid red; height: 50px">
-            <div class="home d-flex" style="margin-right: 400px">
-                <a href="../home/index.php" class="head mr-4"> HOME </a>
+            <div class="home d-flex" style="margin-right: 380px">
+                <a href="/appdevproj/home/index.php" class="head mr-4">HOME</a>
                 <a href="" class="head mr-4"> CATEGORIES </a>
                 <a href="" style="" class="head"> VIDEO </a>
             </div>
-            <div class="search" style="margin-right: 400px">
+            <div class="search" style="margin-right: 380px">
                 <input type="text" placeholder="search video here..">
             </div>
 
@@ -46,9 +48,19 @@
 
                 <?php
                if(isset($_SESSION["userID"])){
-                echo '<button onclick="location.href = \'../profile/profile.php\';"> PROFILE </button>';
+                echo '<span class="d-flex align-items-center">';
+                echo '<p class="" style="margin: 0; color: white;"> Welcome! </p>';
+                echo '<div class="dropdown">';
+                echo '  <button class="dropbtn"> '. $_SESSION["username"] . '</button>';
+                echo '  <div class="dropdown-content">';
+                echo '    <a href="../profile/profile.php"> Profile </a>';
+                echo '    <a href="../profile/payment_settings/payment.php"> Payment Settings </a>';
+                echo '    <a href="#"> Purchase History </a>';
+                echo '  </div>';
+                echo '</div>';
                 echo '<button onclick="location.href = \'../profile/profile.php\';"> CART </button>';
                 echo '<button onclick="location.href = \'../log_in/logout.inc.php\';"> LOGOUT </button>';
+                echo '</span>';
              } elseif(isset($_SESSION["adminID"])){
                 if($_SESSION["adminID"] == 1){
                 echo '<button onclick="location.href = \'../profile/profile.php\';"> SETTINGS </button>';
