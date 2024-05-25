@@ -1,6 +1,6 @@
 <?php
 
-include_once "header_profile.php";
+include_once "../home/header.php";
 include_once "profile_functions.php";
 ?>
 

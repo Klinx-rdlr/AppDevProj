@@ -25,7 +25,7 @@ function loginUser($name, $password) {
             $_SESSION["userID"] = $specificUserId;
             $_SESSION["userEmail"] = $specificUser["Email"];
         }
-    }
+    }   
     return true;
 }
 

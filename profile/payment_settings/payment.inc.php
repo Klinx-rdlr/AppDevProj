@@ -27,7 +27,7 @@
                 $paypalEmail = $_POST['paypal_email'];
                 $paypalPassword = $_POST['paypal_password'];
 
-                $result = addUserPaymentPaypal($paymentOption, $paymentName, $paypalEmail, $paypalPassword);
+                $result = addUserPaymentPaypal($paymentName, $paypalEmail, $paypalPassword);
 
                 if($result){
                     header("location: payment.php?error=none-paypal");
