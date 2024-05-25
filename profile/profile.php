@@ -4,8 +4,6 @@ include_once "../home/header.php";
 include_once "profile_functions.php";
 
 $userProfile = getUserProfile();
-$userPayment = getUserPayments();
-$PaymentType =  $userPayment['Payment_Option']['Payment_Type'];
 
 ?>
 <?php

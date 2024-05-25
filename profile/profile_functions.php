@@ -8,13 +8,6 @@
         }   
     }
 
-    function getUserPayments() {
-        if (isset($_SESSION["profileList"][$_SESSION["userID"]]['Payment_Option'])) {
-            return $_SESSION["profileList"][$_SESSION["userID"]]['Payment_Option'];
-        } else {
-            return null; 
-        }   
-    }
 
 
 
