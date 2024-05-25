@@ -17,12 +17,8 @@
             <div class="form-group">
                 <a href="../reset_password/forgot_password.php">Forgot password?</a>
             </div>
+            <input class="btn btn-block btn-primary" type="submit" value="Log In">
     </form>
-    <div class="form-group">
-        <button class="btn btn-block btn-dark" onclick="location.href = '../admin_login/admin_login.php'">
-            Log in as Admin
-        </button>
-    </div>
 </div>
 
 <div class=" card-footer">
@@ -36,7 +32,11 @@
                         }
                       } 
             ?>
-    <input class="btn btn-block btn-primary" type="submit" value="Log In">
+    <div class="form-group">
+        <button class="btn btn-block btn-dark" onclick="location.href = '../admin_login/admin_login.php'">
+            Log in as Admin
+        </button>
+    </div>
 </div>
 </form>
 </div>

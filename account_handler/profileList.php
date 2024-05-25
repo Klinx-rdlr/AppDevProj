@@ -8,22 +8,25 @@ if(!isset($_SESSION["profileList"])) {
 function addNewProfile($userID){
     $newProfile = array(
         'Status' => 0, //0 for new profile, 1 for edited profile
-        'Fullname' => "",
+        'First Name' => "",
+        'Last Name' => "",
+        'Middle Name' => "",
         'Address' => "",
         'Phone Number' => "",
         'Birthday' => "",
         'VideosAdded' => "",
-        'VideosRented'=> "",
+        'VideosRented' => ""
     );
-
     $_SESSION["profileList"][$userID] = $newProfile;
 }
 
 
-function editProfile($status, $fullname, $address, $phone_number, $birthday){
+function editProfile($status, $firstName, $lastName, $middleName, $address, $phone_number, $birthday){
     $newProfile = array(
         'Status' => $status, //0 for new profile, 1 for edited profile
-        'Fullname' => $fullname,
+        'First Name' => $firstName,
+        'Last Name' => $lastName,
+        'Middle Name' => $middleName,
         'Address' => $address,
         'Phone Number' => $phone_number,
         'Birthday' => $birthday,

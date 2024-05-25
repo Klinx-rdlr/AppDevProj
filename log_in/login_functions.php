@@ -23,8 +23,20 @@ function loginUser($name, $password) {
         }
         else{
             $_SESSION["userID"] = $specificUserId;
-            $_SESSION["username"] = $specificUser["Email"];
+            $_SESSION["userEmail"] = $specificUser["Email"];
         }
     }
     return true;
+}
+
+
+function getUserName($name){
+    foreach($_SESSION["userList"] as $users){
+        if($name == $users['Email']){
+            return $users['Username'];
+        }else if($name == $users['Username']){
+            return $users['Username'];
+        }
+    }
+    return null;
 }
