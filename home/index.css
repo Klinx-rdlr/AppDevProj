@@ -1,0 +1,15 @@
+.hidden {
+  display: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  padding: 0px;
+}
+
+.icon_index:hover {
+  font-size: 50px;
+}

@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>home/header.css">
     <link rel=" stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+
 </head>
 
 <body>
@@ -77,4 +78,4 @@
         </div>
     </div>
 
-    <div class="content-body" style="background-color: #000014; height: 1000px; border:2px solid green">
+    <div class="content-body" style="background-color: black; height: 1000px; border:2px solid green">
