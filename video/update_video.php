@@ -13,6 +13,7 @@
         // video being edited
         $old_video = $_SESSION["video_collection"][$index];
 
+        // record the update of video to admin logs
         $update_details = 
         "UPDATE DETAILS<br>" .
         "Title: " . $old_video->get_title() . " -> " . $_POST["title"] . "<br>" .

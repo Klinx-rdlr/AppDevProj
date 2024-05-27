@@ -10,6 +10,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["action"] == "delete") {
         $deleted_video = $_SESSION["video_collection"][$_POST["index"]];
 
+        // record deletion of video to admin logs
         $deleted_details =
         "DELETE DETAILS<br>" . 
         "Title: " . $deleted_video->get_title() . "<br>" .
@@ -20,6 +21,7 @@
         "Format: " . $deleted_video->get_format() . "<br>";
 
         unset($_SESSION["video_collection"][$_POST["index"]]);
+        
         $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], "Deleted Video", 
             date("Y-m-d h:i:sa"), $deleted_details);
 

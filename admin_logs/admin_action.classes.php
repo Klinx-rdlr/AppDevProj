@@ -1,5 +1,10 @@
 <?php  
     class AdminAction {
+        /* 
+            A class that represents an action done by an admin.
+            Each action made by the admin will be stored in the admin_logs array.
+        */ 
+        
         private $admin_id; 
         private $action_type;
         private $date; 

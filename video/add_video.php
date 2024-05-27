@@ -5,6 +5,7 @@
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["action"] == "add") {
+        // add new video 
         $_SESSION['video_collection'][] = new Video(
             $_POST['title'],
             $_POST['director'],
@@ -14,6 +15,7 @@
             $_POST['format']
         );
 
+        // record the addition of new video to admin logs
         $details = 
         "New Video<br>" . 
         "Title    : " . $_POST['title'] . "<br>" .
@@ -25,6 +27,7 @@
         
         $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], 
             "Added Video", date("Y-m-d h:i:sa"), $details);
+            
         header("Location: video_catalog.php");
         exit;
     }
