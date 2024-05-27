@@ -31,11 +31,12 @@
             <th>Activity</th>
             <th>Date & Time</th>
         </tr>
-        <?php foreach ($_SESSION['admin_logs'] as $log): ?>
+        <?php foreach ($_SESSION['admin_logs'] as $index => $log): ?>
             <tr>
                 <td> <?php echo $log->get_admin_id(); ?> </td>
                 <td> <?php echo $log->get_action_type(); ?> </td>
                 <td> <?php echo $log->get_date(); ?> </td>
+                <td> <a href="activity_details.php?index=<?php echo $index; ?>">Details</a> </td>
             </tr>
         <?php endforeach; ?>
     </table>

@@ -18,6 +18,7 @@
         } else {
             $_SESSION['video_collection'][] =  
             new Video($_POST['title'],
+                      $_POST['director'],
                       $_POST['genre'],
                       $_POST['year'],
                       $_POST['copies'],
@@ -84,6 +85,7 @@
     <table>
         <tr>
             <th> Title </th>
+            <th> Director </th>
             <th> Genre </th>
             <th> Year Released </th>
             <th> No. of Copies </th>
@@ -93,6 +95,7 @@
     <?php foreach ($_SESSION['video_collection'] as $index => $videos): ?>
     <tr>
         <td> <?php echo $videos->get_title(); ?> </td>
+        <td> <?php echo $videos->get_director(); ?> </td> 
         <td> <?php echo $videos->get_genre(); ?> </td>
         <td> <?php echo $videos->get_release_year(); ?> </td>
         <td> <?php echo $videos->get_copies(); ?> </td>

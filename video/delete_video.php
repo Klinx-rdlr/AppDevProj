@@ -8,8 +8,21 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["action"] == "delete") {
+        $deleted_video = $_SESSION["video_collection"][$_POST["index"]];
+
+        $deleted_details =
+        "DELETE DETAILS<br>" . 
+        "Title: " . $deleted_video->get_title() . "<br>" .
+        "Director: " . $deleted_video->get_director() . "<br>" .
+        "Genre: " . $deleted_video->get_genre() . "<br>" .
+        "Year: " . $deleted_video->get_release_year() . "<br>" .
+        "Copies: " . $deleted_video->get_copies() . "<br>" .
+        "Format: " . $deleted_video->get_format() . "<br>";
+
         unset($_SESSION["video_collection"][$_POST["index"]]);
-        $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], "Deleted Video", date("Y-m-d h:i:sa"));
+        $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], "Deleted Video", 
+            date("Y-m-d h:i:sa"), $deleted_details);
+
         header("Location: video_catalog.php");
         exit;
     }
