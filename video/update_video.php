@@ -9,13 +9,29 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["action"] == "update") {
         $index = $_POST["index"];
+
+        // video being edited
+        $old_video = $_SESSION["video_collection"][$index];
+
+        $update_details = 
+        "UPDATE DETAILS<br>" .
+        "Title: " . $old_video->get_title() . " -> " . $_POST["title"] . "<br>" .
+        "Director: " . $old_video->get_director() . " -> " . $_POST["director"] . "<br>" .
+        "Genre: " . $old_video->get_genre() . " -> " . $_POST["genre"] . "<br>" .
+        "Year: " . $old_video->get_release_year() . " -> " . $_POST["year"] . "<br>" .
+        "Copies: " . $old_video->get_copies() . " -> " . $_POST["copies"] . "<br>" .
+        "Format: " . $old_video->get_format() . " -> " . $_POST["format"] . "<br>";
+
         $_SESSION["video_collection"][$index]->set_title($_POST["title"]);
         $_SESSION["video_collection"][$index]->set_director($_POST["director"]);
         $_SESSION["video_collection"][$index]->set_genre($_POST["genre"]);
         $_SESSION["video_collection"][$index]->set_release_year($_POST["year"]);
         $_SESSION["video_collection"][$index]->set_copies($_POST["copies"]);
         $_SESSION["video_collection"][$index]->set_format($_POST["format"]);
-        $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], "Updated Video", date("Y-m-d h:i:sa"));
+
+        
+        $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], "Updated Video", 
+            date("Y-m-d h:i:sa"), $update_details);
           
         header("Location: video_catalog.php");
         exit;

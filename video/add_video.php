@@ -14,7 +14,17 @@
             $_POST['format']
         );
 
-        $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], "Added Video", date("Y-m-d h:i:sa"));
+        $details = 
+        "New Video<br>" . 
+        "Title    : " . $_POST['title'] . "<br>" .
+        "Director : " . $_POST['director'] . "<br>" . 
+        "Genre    : " . $_POST['genre'] . "<br>" .
+        "Year     : " . $_POST['year'] . "<br>" .
+        "Copies   : " . $_POST['copies'] . "<br>" .
+        "Format   : " . $_POST['format'] . "<br>";
+        
+        $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], 
+            "Added Video", date("Y-m-d h:i:sa"), $details);
         header("Location: video_catalog.php");
         exit;
     }
