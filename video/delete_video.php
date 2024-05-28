@@ -15,6 +15,8 @@
         "DELETE DETAILS<br>" . 
         "Title: " . $deleted_video->get_title() . "<br>" .
         "Director: " . $deleted_video->get_director() . "<br>" .
+        "Summary: " . $deleted_video->get_summary() . "<br>" .
+        "Starring: " . $deleted_video->get_starring() . "<br>" .
         "Genre: " . $deleted_video->get_genre() . "<br>" .
         "Year: " . $deleted_video->get_release_year() . "<br>" .
         "Copies: " . $deleted_video->get_copies() . "<br>" .
