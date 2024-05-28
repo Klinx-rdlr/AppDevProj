@@ -17,6 +17,9 @@
     ?>
 
     <!-- Display Video Information --> 
+    <div class="thumbnail">
+        <img src="<?php echo $video->get_thumbnail(); ?>" alt="Thumbnail">
+    </div>
     <h1> <?php echo $video->get_title(); ?> </h1>
     <p> Diretor: <?php echo $video->get_director(); ?> </p>
     <p> Starring: <?php echo $video->get_starring(); ?> </p>

@@ -93,5 +93,9 @@
         public function set_thumbnail($thumbnail) {
             $this->thumbnail = $thumbnail;
         }
+
+        public function is_set_thumbnail() {
+            return isset($this->thumbnail);
+        }
     }
 ?>

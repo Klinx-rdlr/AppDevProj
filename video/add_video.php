@@ -8,6 +8,7 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["action"] == "add") {
+       
         // add new video 
         $_SESSION['video_collection'][] = new Video(
             strip_tags($_POST['title']),
@@ -20,14 +21,18 @@
             $_POST['format']
         );
 
+        $video_collection_size = count($_SESSION['video_collection']);
         if (isset($_FILES["thumbnail"])) {
             $target_dir = "../thumbnails/";
             $target_file = $target_dir . basename($_FILES["thumbnail"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-   
-        }
+            
+            $_SESSION['video_collection'][$video_collection_size-1]->set_thumbnail($target_file);
+            if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $target_file)) {
+                $_SESSION['video_collection'][$video_collection_size-1]->set_thumbnail($target_file);
+            }
+        } 
 
         // record the addition of new video to admin logs
         $details = 

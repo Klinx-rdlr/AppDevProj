@@ -18,7 +18,29 @@
         $summary = strip_tags($_POST["summary"]);
         $starring = strip_tags($_POST["starring"]);
         $genre = strip_tags($_POST["genre"]);
+        $thumbnail; 
 
+        if ($old_video->is_set_thumbnail()) {
+            $thumbnail = $old_video->get_thumbnail();
+        } else {
+            $thumbnail = "";
+        }
+
+        if (isset($_FILES["thumbnail"])) {
+            $target_dir = "../thumbnails/";
+            $target_file = $target_dir . basename($_FILES["thumbnail"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            
+            if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $target_file)) {
+                $_SESSION['video_collection'][$index]->set_thumbnail($target_thumbnail);
+            }
+
+            $new_thumbnail = $target_file;
+        }
+
+       
+        
         // record the update of video to admin logs
         $update_details = 
         "UPDATE DETAILS<br>" .
@@ -29,7 +51,8 @@
         "Genre: " . $old_video->get_genre() . " -> " . $genre . "<br>" .
         "Year: " . $old_video->get_release_year() . " -> " . $_POST["year"] . "<br>" .
         "Copies: " . $old_video->get_copies() . " -> " . $_POST["copies"] . "<br>" .
-        "Format: " . $old_video->get_format() . " -> " . $_POST["format"] . "<br>";
+        "Format: " . $old_video->get_format() . " -> " . $_POST["format"] . "<br>" .
+        "Thumbnail: " . $old_video->get_thumbnail() . " -> " . $new_thumbnail . "<br>";
 
         $_SESSION["video_collection"][$index]->set_title($title);
         $_SESSION["video_collection"][$index]->set_director($director);
@@ -39,7 +62,7 @@
         $_SESSION["video_collection"][$index]->set_release_year($_POST["year"]);
         $_SESSION["video_collection"][$index]->set_copies($_POST["copies"]);
         $_SESSION["video_collection"][$index]->set_format($_POST["format"]);
-        $_SESSION["video_collection"][$index]->set_thumbnail($_POST["thumbnail"]);
+        $_SESSION["video_collection"][$index]->set_thumbnail($new_thumbnail);
 
         
         $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], "Updated Video", 
