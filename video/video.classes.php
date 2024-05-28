@@ -2,7 +2,7 @@
     class Video {
         private $title; 
         private $director;
-        private $genre; 
+        private $genre;
         private $release_year;
         private $copies; 
         private $format; 
