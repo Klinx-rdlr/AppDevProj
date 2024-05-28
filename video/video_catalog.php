@@ -88,7 +88,7 @@
             <?php if ($videos->is_set_thumbnail()): ?>
                 <img src="<?php echo $videos->get_thumbnail(); ?>" height='100' width='100'>
             <?php else: ?>
-                <img src="../thumbnails/no-poster-available.jpg" height='100' width='100'>
+                <img src="../thumbnails/no_poster_available.jpg" height='100' width='100'>
             <?php endif; ?>
                
         </td>

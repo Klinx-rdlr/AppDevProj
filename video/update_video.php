@@ -23,20 +23,25 @@
         if ($old_video->is_set_thumbnail()) {
             $thumbnail = $old_video->get_thumbnail();
         } else {
-            $thumbnail = "";
+            $thumbnail = "No Image";
         }
 
         if (isset($_FILES["thumbnail"])) {
-            $target_dir = "../thumbnails/";
-            $target_file = $target_dir . basename($_FILES["thumbnail"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            
-            if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $target_file)) {
-                $_SESSION['video_collection'][$index]->set_thumbnail($target_thumbnail);
-            }
+            if ($_FILES["thumbnail"]["error"] == UPLOAD_ERR_NO_FILE) {
+                $_SESSION['video_collection'][$index]->set_thumbnail("../thumbnails/no_poster_available.jpg");
+            } else {
 
-            $new_thumbnail = $target_file;
+                $target_dir = "../thumbnails/";
+                $target_file = $target_dir . basename($_FILES["thumbnail"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                
+                if (move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $target_file)) {
+                    $_SESSION['video_collection'][$index]->set_thumbnail($target_thumbnail);
+                }  
+                $new_thumbnail = $target_file;
+            }
+            
         }
 
        
@@ -87,7 +92,7 @@
     ?>
 
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="update">
         <input type="hidden" name="index" value="<?php echo $_GET["index"]?>">
         
