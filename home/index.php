@@ -98,21 +98,17 @@
         <?php else: ?>
         <table>
             <tr>
+                <th>Image</th>
                 <th>Title</th>
                 <th>Director</th>
-                <th>Genre</th>
-                <th>Release Year</th>
-                <th>Copies</th>
-                <th>Format</th>
+               
             <tr>
-            <?php foreach($_SESSION['video_collection'] as $video): ?>
+            <?php foreach($_SESSION['video_collection'] as $index => $video): ?>
                 <tr>
+                    <td> <img src="<?php echo $video->get_thumbnail(); ?>" alt="Image" width="100" height="100"> </td>
                     <td> <?php echo $video->get_title(); ?> </td>
                     <td> <?php echo $video->get_director(); ?> </td>
-                    <td> <?php echo $video->get_genre(); ?> </td>
-                    <td> <?php echo $video->get_release_year(); ?> </td>
-                    <td> <?php echo $video->get_copies(); ?> </td>
-                    <td> <?php echo $video->get_format(); ?> </td>
+                    <td> <a href="../video/video_details.php?index=<?php echo $index; ?>"> View Details </a> </td>
                 </tr>
             <?php endforeach; ?> 
         </table>

@@ -15,18 +15,7 @@
         if (isset($_POST["action"]) && $_POST["action"] == "delete") {
             unset($_SESSION['video_collection']);
             $_SESSION['video_collection'] = [];
-        } else {
-            $_SESSION['video_collection'][] =  
-            new Video($_POST['title'],
-                      $_POST['director'],
-                      $_POST['genre'],
-                      $_POST['year'],
-                      $_POST['copies'],
-                      $_POST['format']
-            );
-            $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], "Added Video", date("Y-m-d h:i:sa"));
-        }
-       
+        } 
     }
 
 ?>
@@ -84,22 +73,30 @@
     <?php if (!empty($_SESSION['video_collection'])): ?>
     <table>
         <tr>
+            <th> Image </th> 
             <th> Title </th>
             <th> Director </th>
             <th> Genre </th>
             <th> Year Released </th>
             <th> No. of Copies </th>
-            <th> Format </th>
             <th> Index </th>
         </tr>
     <?php foreach ($_SESSION['video_collection'] as $index => $videos): ?>
     <tr>
+        <td> 
+          
+            <?php if ($videos->is_set_thumbnail()): ?>
+                <img src="<?php echo $videos->get_thumbnail(); ?>" height='100' width='100'>
+            <?php else: ?>
+                <img src="../thumbnails/no-poster-available.jpg" height='100' width='100'>
+            <?php endif; ?>
+               
+        </td>
         <td> <?php echo $videos->get_title(); ?> </td>
         <td> <?php echo $videos->get_director(); ?> </td> 
         <td> <?php echo $videos->get_genre(); ?> </td>
         <td> <?php echo $videos->get_release_year(); ?> </td>
         <td> <?php echo $videos->get_copies(); ?> </td>
-        <td> <?php echo $videos->get_format(); ?> </td>
         <td> <?php echo $index; ?> </td>
         <td> <a href="update_video.php?index=<?php echo $index; ?>"> Edit </a> 
              <a href="delete_video.php?index=<?php echo $index; ?>"> Delete</td>
