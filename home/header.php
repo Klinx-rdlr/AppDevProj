@@ -70,7 +70,7 @@
                 echo '    <a href="#"> Purchase History </a>';
                 echo '  </div>';
                 echo '</div>';
-                echo '<button onclick="location.href = \'../profile/profile.php\';"> CART </button>';
+                echo '<button onclick="location.href = \'/appdevproj/cart/cart.php\';"> CART </button>';
                 echo '<button onclick="location.href = \'../log_in/logout.inc.php\';"> LOGOUT </button>';
                 echo '</span>';
              } elseif(isset($_SESSION["adminID"])){

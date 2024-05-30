@@ -21,6 +21,13 @@ $user = $_SESSION["userTempList"];
             </div>
         </div>
         <div class="card-footer">
+            <?php
+                     if(isset($_GET["error"])){
+                        if ($_GET["error"] == "status2") {
+                            echo '<p class="text-center" style="color: red;"> Wrong code, please try again!</p>';
+                        }
+                    }
+                        ?>
             <input type="submit" class="btn btn-block btn-primary" value="Continue">
         </div>
     </form>

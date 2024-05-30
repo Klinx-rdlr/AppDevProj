@@ -2,6 +2,8 @@
 require_once "../video/video.classes.php";
 include_once "../home/header.php";
 $index = $_GET["index"];
+$title = $_SESSION['video_collection'][$index]->get_title();
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $version = $_POST['version_option'];
@@ -62,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class=\"form-group\">
                 <label class=\"mt-3\" for=\"\"> No. of available copies: $no_copies </label>
                 <input type=\"hidden\" name=\"type\" value=\"$version\" required>
+                <input type=\"hidden\" name=\"title\" value=\"$title\" required>
                 <input class=\"form-control\" type=\"text\" name=\"copies\" required>
                 </div>
                 <input class=\"btn btn-block btn-dark\" type=\"submit\" value=\"Submit\">";
