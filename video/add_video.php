@@ -1,5 +1,5 @@
 <?php 
-    require_once('video.classes.php');
+    require('video.classes.php');
     require_once('../admin_logs/admin_action.classes.php');
     session_start();
     
@@ -22,6 +22,7 @@
         );
 
         $video_collection_size = count($_SESSION['video_collection']);
+      
         if (isset($_FILES["thumbnail"])) {
             if ($_FILES["thumbnail"]["error"] == UPLOAD_ERR_NO_FILE) {
                 $_SESSION['video_collection'][$video_collection_size-1]->set_thumbnail("../thumbnails/no_poster_available.jpg");

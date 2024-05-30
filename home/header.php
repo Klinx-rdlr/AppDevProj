@@ -37,7 +37,7 @@
             style="width: 100%; border: 2px solid red; height: 50px">
             <div class="home d-flex" style="margin-right: 380px">
                 <a href="/appdevproj/home/index.php" class="head mr-4">HOME</a>
-                <a href="" class="head mr-4"> CATEGORIES </a>
+                <a href="../video/browse_category.php" class="head mr-4"> CATEGORIES </a>
                 <a href="" style="" class="head"> VIDEO </a>
             </div>
             <div class="search" style="margin-right: 380px">

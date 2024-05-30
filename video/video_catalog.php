@@ -18,6 +18,19 @@
         } 
     }
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["action"]) && $_POST["action"] == "clear_category") {
+            unset($_SESSION['genre_categories']);
+            $_SESSION['genre_categories'] = array(
+                "action" => [], 
+                "drama" => [], 
+                "comedy" => [], 
+                "adventure" => [], 
+                "horror" => [],
+            );
+        } 
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +80,11 @@
     <form action="" method="post">
     <input type="hidden" name="action" value="delete">
     <input type="submit" value="Delete Videos">
+    </form>
+
+    <form action="" method="post">
+    <input type="hidden" name="action" value="clear_category">
+    <input type="submit" value="Clear Categories">
     </form>
 
 

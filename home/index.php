@@ -1,7 +1,8 @@
 <?php
     require_once "../video/video.classes.php";
+    require_once "../video/categories.php";
     include_once "header.php";
-
+    
     $filtered_search = False;
     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search_criteria"]) && isset($_GET["search_value"])) {
         $search_criteria = $_GET["search_criteria"];
