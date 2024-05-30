@@ -4,7 +4,7 @@ include_once "../home/header.php";
 
 ?>
 
-<div class="adminLogIn card" style="width: 400px">
+<div class="adminLogIn card mt-5" style="width: 400px; margin: auto">
     <div class="card-header">
         <h3 class="text-center"> Admin Log In</h3>
     </div>

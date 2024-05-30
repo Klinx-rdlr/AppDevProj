@@ -9,7 +9,7 @@ if (isset($_POST['payment_option'])) {
 
 <div class="row" style="width: 1500px; margin: auto;">
 
-    <div class="paymentList col card mt-5 mr-3" style="width: 500px; border:">
+    <div class="paymentList col card mt-5 mr-3" style="width: 400px; border:">
         <div class="card-header">
             <p class="text-center" style="margin: 0px"> Your Payment Methods </p>
         </div>
@@ -24,7 +24,7 @@ if (isset($_POST['payment_option'])) {
                     <?php if($payments['Payment_Type'] == "card"): ?>
                     <p style="margin: 0;"> Card </p>
                     <p style="margin: 0;"> **** **** **** <?= substr($payments['Card_Number'], -4) ?> </p>
-                    <button class='btn btn-block btn-primary' style="width: 100px;"
+                    <button class='btn btn-block btn-dark' style="width: 100px;"
                         onclick="location.href = 'payment_details.php?id=<?php echo $id; ?>'"> Check
                     </button>
                     <?php elseif($payments['Payment_Type'] == "paypal"): ?>
@@ -32,7 +32,7 @@ if (isset($_POST['payment_option'])) {
                     <p style="margin: 0;">
                         <?= substr($payments['Paypal_Email'], 0, 3) . str_repeat('*', strlen($payments['Paypal_Email']) - 6) . substr($payments['Paypal_Email'], -5) ?>
                     </p>
-                    <button class='btn btn-block btn-primary' style="width: 100px;"
+                    <button class='btn btn-block btn-dark' style="width: 100px;"
                         onclick="location.href = 'payment_details.php?id=<?php echo $id; ?>'"> Check
                     </button>
                     <?php endif; ?>
@@ -68,9 +68,9 @@ if (isset($_POST['payment_option'])) {
                 </select>
                 <?php
             if(!isset($_POST['payment_option'])){
-                echo "<button class='btn btn-block btn-primary mt-3' type='submit'> Choose </button>";
+                echo "<button class='btn btn-block btn-dark mt-3' type='submit'> Choose </button>";
             }else if(isset($_POST['payment_option'])){
-                echo "<button class='btn btn-block btn-primary mt-3' type='submit'>Change </button>";
+                echo "<button class='btn btn-block btn-success mt-3' type='submit'>Change </button>";
             }
         
             ?>
@@ -146,7 +146,7 @@ EOT;
 ?>
 
                 <div class="card-footer mt-4">
-                    <button class='btn btn-block btn-primary mt-3' type='submit'> Enter </button>
+                    <button class='btn btn-block btn-dark mt-3' type='submit'> Enter </button>
                     <?php
  if(isset($_GET["error"])) {
     if($_GET["error"] == "none") {

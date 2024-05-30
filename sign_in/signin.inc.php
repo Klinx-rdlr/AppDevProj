@@ -18,9 +18,9 @@
     
         $mail = require __DIR__ ."../../mailer.php";
         //<a href="http://localhost/appdevproj/sign_in/signin.inc.php?status=status5"> Click Here </a>
-        $mail->setFrom("xyzvideorentals@gmail.com");
+        $mail->setFrom("xyzvideorentals@gmail.com", "XYZ VIDEO RENTALS");
         $mail->addAddress($email_address);
-        $mail->setSubject = "Account Verification";
+        $mail->Subject = "Account Verification";
         $mail->Body =  <<<END
         
         This is your verification code: $verifyCode

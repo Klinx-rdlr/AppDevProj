@@ -1,6 +1,5 @@
 <?php
 require_once("../admin_logs/admin_action.classes.php");
-require_once("../admin_logs/admin_logs.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $adminID = $_POST["adminID"];
@@ -8,6 +7,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     if($adminID == "admin" && $adminPass == "12345678"){
         session_start();
+        if (!isset($_SESSION['admin_logs'])) {
+            $_SESSION['admin_logs'] = [];
+        }
         $_SESSION["adminID"] = "1";
         header("location: ../home/index.php?error=none");
         $_SESSION['admin_logs'][] = new AdminAction($adminID, "Logged In", date("Y-m-d h:i:sa"), "No Further Details");

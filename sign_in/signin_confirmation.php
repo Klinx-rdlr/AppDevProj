@@ -5,7 +5,7 @@ $user = $_SESSION["userTempList"];
     
 ?>
 
-<div class="signinConfirmation card" style="width: 400px;">
+<div class="signinConfirmation card mt-5" style="width: 400px; margin: auto">
     <div class="card-header text-center">
         <h4> Sign in request submitted </h4>
     </div>

@@ -20,11 +20,19 @@
 .low-title {
     font-weight: 100;
 }
+
+.img-container {
+    margin-top: 17px;
+    margin-left: 100px;
+    height: 450px;
+    width: 350px;
+}
 </style>
 
 <body>
     <?php
         $video = $_SESSION['video_collection'][$_GET['index']];
+        $index =  $_GET['index'];
     ?>
 
     <div class="video-container row d-flex justify-content-center"
@@ -80,9 +88,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6" style="border: 1px solid black">
+                        <div class="col-6 bg-dark" style="border: 1px solid black">
                             <div class="thumbnail">
-                                <img src="<?php echo $video->get_thumbnail(); ?>" alt="Thumbnail">
+                                <img class="img-container" src="<?php echo $video->get_thumbnail(); ?>" alt="Thumbnail">
                             </div>
                         </div>
                     </div>
@@ -94,7 +102,7 @@
     <!-- link to Rent Page -->
     <!-- Make sure Rent Page can be only accessed if user is logged in -->
     <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
-        onclick="location.href='../rent/rent_page.php'" type="button">
+        onclick="location.href='../rent/rent_page.php?index=<?php echo $index ?>'" type="button">
         Rent
     </button> <br>
 

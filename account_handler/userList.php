@@ -1,5 +1,6 @@
 <?php
 include_once "profileList.php"; // needed for addUser()
+include_once "cartList.php"; // needed for addUser()
 
 if(!isset($_SESSION["userList"])) {
     $_SESSION["userList"] = array();
@@ -34,6 +35,7 @@ function signUpUser($user_name, $email, $password){
     );
 
     addNewProfile($_SESSION["userCount"]); //can be seen at profileList.php
+    addNewCart($_SESSION["userCount"]);
     $_SESSION["userList"][$_SESSION["userCount"]] = $newUser;
     $_SESSION["userCount"]++;
 
