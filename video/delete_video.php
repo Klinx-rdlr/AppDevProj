@@ -19,8 +19,10 @@
         "Starring: " . $deleted_video->get_starring() . "<br>" .
         "Genre: " . $deleted_video->get_genre() . "<br>" .
         "Year: " . $deleted_video->get_release_year() . "<br>" .
-        "Copies: " . $deleted_video->get_copies() . "<br>" .
-        "Format: " . $deleted_video->get_format() . "<br>";
+        "DVD: " . $deleted_video->get_dvd() . "<br>" .
+        "Blu-ray: " . $deleted_video->get_blu_ray() . "<br>" .
+        "UHD: " . $deleted_video->get_uhd() . "<br>" .
+        "Digital: " . $deleted_video->get_digital() . "<br>";
 
         unset($_SESSION["video_collection"][$_POST["index"]]);
         

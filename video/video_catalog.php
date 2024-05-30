@@ -18,19 +18,6 @@
         } 
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["action"]) && $_POST["action"] == "clear_category") {
-            unset($_SESSION['genre_categories']);
-            $_SESSION['genre_categories'] = array(
-                "action" => [], 
-                "drama" => [], 
-                "comedy" => [], 
-                "adventure" => [], 
-                "horror" => [],
-            );
-        } 
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -82,10 +69,6 @@
     <input type="submit" value="Delete Videos">
     </form>
 
-    <form action="" method="post">
-    <input type="hidden" name="action" value="clear_category">
-    <input type="submit" value="Clear Categories">
-    </form>
 
 
     <?php if (!empty($_SESSION['video_collection'])): ?>
@@ -96,8 +79,10 @@
             <th> Director </th>
             <th> Genre </th>
             <th> Year Released </th>
-            <th> No. of Copies </th>
-            <th> Index </th>
+            <th> DVD </th>
+            <th> Blu-ray </th>
+            <th> UHD </th>
+            <th> Digital </th>
         </tr>
     <?php foreach ($_SESSION['video_collection'] as $index => $videos): ?>
     <tr>
@@ -114,8 +99,10 @@
         <td> <?php echo $videos->get_director(); ?> </td> 
         <td> <?php echo $videos->get_genre(); ?> </td>
         <td> <?php echo $videos->get_release_year(); ?> </td>
-        <td> <?php echo $videos->get_copies(); ?> </td>
-        <td> <?php echo $index; ?> </td>
+        <td> <?php echo $videos->get_dvd(); ?> </td>
+        <td> <?php echo $videos->get_blu_ray(); ?> </td>
+        <td> <?php echo $videos->get_uhd(); ?> </td>
+        <td> <?php echo $videos->get_digital(); ?> </td>
         <td> <a href="update_video.php?index=<?php echo $index; ?>"> Edit </a> 
              <a href="delete_video.php?index=<?php echo $index; ?>"> Delete</td>
     </tr>

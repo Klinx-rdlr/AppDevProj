@@ -6,20 +6,25 @@
         private $starring; 
         private $genre;
         private $release_year;
-        private $copies; 
-        private $format;
+        private $dvd;
+        private $blu_ray; 
+        private $uhd;
+        private $digital; 
         private $thumbnail; 
 
         public function __construct($title, $director, $summary, 
-        $starring, $genre, $release_year, $copies, $format) {
+            $starring, $genre, $release_year, 
+            $dvd, $blu_ray, $uhd, $digital) {
             $this->title = $title;
             $this->director = $director;
             $this->summary = $summary; 
             $this->starring = $starring;
             $this->genre = $genre;
             $this->release_year = $release_year; 
-            $this->copies = $copies;
-            $this->format = $format;
+            $this->dvd = $dvd;
+            $this->blu_ray = $blu_ray;
+            $this->uhd = $uhd; 
+            $this->digital = $digital;
         }
 
         public function get_title() {
@@ -46,12 +51,20 @@
             return $this->release_year; 
         }
 
-        public function get_copies() {
-            return $this->copies; 
+        public function get_dvd() {
+            return $this->dvd;
+        }
+    
+        public function get_blu_ray() {
+            return $this->blu_ray; 
         }
 
-        public function get_format() {
-            return $this->format;
+        public function get_uhd() {
+            return $this->uhd;
+        }
+
+        public function get_digital() {
+            return $this->digital;
         }
 
         public function get_thumbnail() {
@@ -82,12 +95,20 @@
             $this->release_year = $release_year;
         }
 
-        public function set_copies($copies) {
-            $this->copies = $copies;
+        public function set_dvd($dvd) {
+            $this->dvd = $dvd;
         }
 
-        public function set_format($format) {
-            $this->format = $format;   
+        public function set_blu_ray($blu_ray) {
+            $this->blu_ray = $blu_ray;
+        }
+
+        public function set_uhd($uhd) {
+            $this->uhd = $uhd;
+        }
+
+        public function set_digital($digital) {
+            $this->digital = $digital;
         }
 
         public function set_thumbnail($thumbnail) {

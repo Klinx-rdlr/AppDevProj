@@ -13,11 +13,17 @@
         // video being edited
         $old_video = $_SESSION["video_collection"][$index];
 
+        // updated information
         $title = strip_tags($_POST["title"]);
         $director = strip_tags($_POST["director"]);
         $summary = strip_tags($_POST["summary"]);
         $starring = strip_tags($_POST["starring"]);
         $genre = strip_tags($_POST["genre"]);
+        $dvd = $_POST['dvd'];
+        $blu_ray = $_POST['blu_ray'];
+        $uhd = $_POST['uhd']; 
+        $digital = $_POST['digital'];
+
         $thumbnail; 
 
         if ($old_video->is_set_thumbnail()) {
@@ -26,6 +32,11 @@
             $thumbnail = "No Image";
         }
 
+        $genre = trim(strtolower($_POST['genre']));
+        if (!in_array($genre, $_SESSION['genre_categories'])) {
+            $_SESSION['genre_categories'][] = $genre; 
+        }
+        
         if (isset($_FILES["thumbnail"])) {
             if ($_FILES["thumbnail"]["error"] == UPLOAD_ERR_NO_FILE) {
                 $_SESSION['video_collection'][$index]->set_thumbnail("../thumbnails/no_poster_available.jpg");
@@ -55,8 +66,10 @@
         "Starring: " . $old_video->get_starring() . " -> " . $starring . "<br>" .
         "Genre: " . $old_video->get_genre() . " -> " . $genre . "<br>" .
         "Year: " . $old_video->get_release_year() . " -> " . $_POST["year"] . "<br>" .
-        "Copies: " . $old_video->get_copies() . " -> " . $_POST["copies"] . "<br>" .
-        "Format: " . $old_video->get_format() . " -> " . $_POST["format"] . "<br>" .
+        "DVDs: " . $old_video->get_dvd() . " -> " . $dvd . "<br>" .
+        "Blu-ray: " . $old_video->get_blu_ray() . " -> " . $blu_ray . "<br>" .
+        "UHD: " . $old_video->get_uhd() . " -> " . $uhd . "<br>" .
+        "Digital: " . $old_video->get_digital() . " -> " . $digital . "<br>" .
         "Thumbnail: " . $old_video->get_thumbnail() . " -> " . $new_thumbnail . "<br>";
 
         $_SESSION["video_collection"][$index]->set_title($title);
@@ -65,8 +78,10 @@
         $_SESSION["video_collection"][$index]->set_starring($starring);
         $_SESSION["video_collection"][$index]->set_genre($genre);
         $_SESSION["video_collection"][$index]->set_release_year($_POST["year"]);
-        $_SESSION["video_collection"][$index]->set_copies($_POST["copies"]);
-        $_SESSION["video_collection"][$index]->set_format($_POST["format"]);
+        $_SESSION["video_collection"][$index]->set_dvd($dvd);
+        $_SESSION["video_collection"][$index]->set_blu_ray($blu_ray);
+        $_SESSION["video_collection"][$index]->set_uhd($uhd);
+        $_SESSION["video_collection"][$index]->set_digital($digital);
         $_SESSION["video_collection"][$index]->set_thumbnail($new_thumbnail);
 
         
@@ -109,13 +124,15 @@
             value="<?php echo $video->get_genre();?>"> <br>
         Year Released: <input type="text" id="year" name="year" minlength='4' maxlength='4' required
             value="<?php echo $video->get_release_year();?>"> <br>
-        No. of Copies: <input type="number" id="copies" name="copies" min='1' required
-            value="<?php echo $video->get_copies();?>"> <br>
-        Format: <select name="format" id="format" required="required">
-            <option value="DVD"> DVD </option>
-            <option value="Blu-ray"> Blu-ray </option>
-            <option value="Digital"> Digital </option>
-        </select> <br>
+        DVD: <input type="number" id="copies" name="copies" required
+            value="<?php echo $video->get_dvd();?>"> <br>
+        Blu-ray: <input type="number" id="copies" name="copies" required
+            value="<?php echo $video->get_blu_ray();?>"> <br>
+        UHD: <input type="number" id="copies" name="copies" required
+            value="<?php echo $video->get_uhd();?>"> <br>
+        Digital: <input type="number" id="copies" name="copies" required
+            value="<?php echo $video->get_digital();?>"> <br>
+
         Video Thumbnail: <input type="file" id="thumbnail" name="thumbnail"> <br>
         <input type="submit" value="Update Video">
     </form>

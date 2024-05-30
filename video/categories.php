@@ -9,6 +9,11 @@
             "comedy",
             "adventure",
             "horror",
+            'sci-fi',
+            'fantasy',
+            'historical', 
+            'animation',
+            'romance'
         );
     }
 

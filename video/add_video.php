@@ -1,5 +1,6 @@
 <?php 
     require('video.classes.php');
+    require('categories.php');
     require_once('../admin_logs/admin_action.classes.php');
     session_start();
     
@@ -17,12 +18,18 @@
             strip_tags($_POST['starring']),
             strip_tags($_POST['genre']),
             $_POST['year'],
-            $_POST['copies'],
-            $_POST['format']
+            $_POST['dvd'],
+            $_POST['blu_ray'],
+            $_POST['uhd'], 
+            $_POST['digital']
         );
 
         $video_collection_size = count($_SESSION['video_collection']);
-      
+        $genre = trim(strtolower($_POST['genre']));
+        if (!in_array($genre, $_SESSION['genre_categories'])) {
+            $_SESSION['genre_categories'][] = $genre; 
+        }
+
         if (isset($_FILES["thumbnail"])) {
             if ($_FILES["thumbnail"]["error"] == UPLOAD_ERR_NO_FILE) {
                 $_SESSION['video_collection'][$video_collection_size-1]->set_thumbnail("../thumbnails/no_poster_available.jpg");
@@ -48,8 +55,11 @@
         "Starring : " . strip_tags($_POST['starring']) . "<br>" .
         "Genre    : " . strip_tags($_POST['genre']) . "<br>" .
         "Year     : " . $_POST['year'] . "<br>" .
-        "Copies   : " . $_POST['copies'] . "<br>" .
-        "Format   : " . $_POST['format'] . "<br>";
+        "No. of DVDs   : " . $_POST['dvd'] . "<br>" .
+        "No. of Blu-rays   : " . $_POST['blu-ray'] . "<br>" .
+        "No. of UHDs   : " . $_POST['uhd'] . "<br>" .
+        "No. of Digital Copies   : " . $_POST['digital'] . "<br>";
+
 
         $_SESSION['admin_logs'][] = new AdminAction($_SESSION['adminID'], 
             "Added Video", date("Y-m-d h:i:sa"), $details);
@@ -77,13 +87,10 @@
         Starring: <input type="text" id="starring" name="starring"> <br>
         Genre: <input type="text" id="genre" name="genre" required> <br>
         Year Released: <input type="text" id="year" name="year" minlength='4' maxlength='4' required> <br>
-        No. of Copies: <input type="number" id="copies" name="copies" min='1' required> <br>
-        Format: <select name="format" id="format" required="required">
-            <option value="DVD"> DVD </option>
-            <option value="Blu-ray"> Blu-ray </option>
-            <option value="Digital"> Digital </option>
-        </select> <br>
-
+        No. of DVDs: <input type="number" id="dvd" name="dvd"  required> <br>
+        No. of Blu-rays: <input type="number" id="blu_ray" name="blu_ray" required> <br>
+        No. of UHDs: <input type="number" id="uhd" name="uhd" required> <br>
+        No. of Digital: <input type="number" id="digital" name="digital"  required> <br>
         Video Thumbnail: <input type="file" id="thumbnail" name="thumbnail"> <br>
         <input type="submit" value="Add Video">
     </form>

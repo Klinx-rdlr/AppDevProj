@@ -27,7 +27,7 @@
     
     <div class="genre">
         <h2> Genre </h2> 
-        <?php foreach ($_SESSION['genre_categories'] as $genre => $videos): ?>
+        <?php foreach ($_SESSION['genre_categories'] as $genre): ?>
             <div class="category"> 
             
                 <a href="video_list.php?genre=<?php echo $genre; ?>"> <?php echo ucfirst($genre); ?> </a>

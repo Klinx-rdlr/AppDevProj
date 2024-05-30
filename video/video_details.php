@@ -21,11 +21,10 @@
         <img src="<?php echo $video->get_thumbnail(); ?>" alt="Thumbnail">
     </div>
     <h1> <?php echo $video->get_title(); ?> </h1>
-    <p> Diretor: <?php echo $video->get_director(); ?> </p>
+    <p> Director: <?php echo $video->get_director(); ?> </p>
     <p> Starring: <?php echo $video->get_starring(); ?> </p>
     <p> Genre : <?php echo $video->get_genre(); ?> </p>
     <p> Release Year : <?php echo $video->get_release_year(); ?> </p>
-    <p> Copies Available : <?php echo $video->get_copies(); ?> </p>
 
     <div class="summary">
         <h2> Summary: </h2>
