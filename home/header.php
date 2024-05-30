@@ -1,6 +1,21 @@
 <?php
     session_start();
     define('BASE_URL', 'http://localhost/appdevproj/');
+
+    if (!isset($_SESSION['genre_categories'])) {
+        $_SESSION['genre_categories'] = array(
+            "ACTION", 
+            "drama",
+            "comedy",
+            "adventure",
+            "horror",
+            'sci-fi',
+            'fantasy',
+            'historical', 
+            'animation',
+            'romance'
+        );
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,15 +48,13 @@
     </style>
     <div class="header" style="width: 100%; background-color: #232f3e;">
 
-        <div class="nav-container d-flex justify-content-center align-items-center"
-            style="width: 100%; border: 2px solid red; height: 50px">
+        <div class="nav-container d-flex justify-content-center align-items-center" style="width: 100%;  height: 50px">
             <div class="home d-flex" style="margin-right: 380px">
                 <a href="/appdevproj/home/index.php" class="head mr-4">HOME</a>
-                <a href="../video/browse_category.php" class="head mr-4"> CATEGORIES </a>
+                <a href="/appdevproj/video/browse_category.php" class="head mr-4"> CATEGORIES </a>
                 <a href="" style="" class="head"> VIDEO </a>
             </div>
             <div class="search" style="margin-right: 380px">
-                <input type="text" placeholder="search video here..">
             </div>
 
             <div class="register">
@@ -49,12 +62,11 @@
                 <?php
                if(isset($_SESSION["userID"])){
                 echo '<span class="d-flex align-items-center">';
-                echo '<p class="" style="margin: 0; color: white;"> Welcome! </p>';
                 echo '<div class="dropdown">';
                 echo '  <button class="dropbtn"> '. $_SESSION["username"] . '</button>';
                 echo '  <div class="dropdown-content">';
-                echo '    <a href="../profile/profile.php"> Profile </a>';
-                echo '    <a href="../profile/payment_settings/payment.php"> Payment Settings </a>';
+                echo '    <a href="/appdevproj/profile/profile.php"> Profile </a>';
+                echo '    <a href="/appdevproj/profile/payment_settings/payment.php"> Payment Settings </a>';
                 echo '    <a href="#"> Purchase History </a>';
                 echo '  </div>';
                 echo '</div>';
@@ -78,4 +90,4 @@
         </div>
     </div>
 
-    <div class="content-body" style="background-color: #000014; height: 1000px; border:2px solid green">
+    <div class="content-body" style="background-color: white; height: 1000px;">

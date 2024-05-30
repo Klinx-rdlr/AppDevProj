@@ -1,8 +1,22 @@
 <?php
     require_once "../video/video.classes.php";
-    require_once "../video/categories.php";
     include_once "header.php";
-    
+
+    if (!isset($_SESSION['genre_categories'])) {
+        $_SESSION['genre_categories'] = array(
+            "action", 
+            "drama",
+            "comedy",
+            "adventure",
+            "horror",
+            'sci-fi',
+            'fantasy',
+            'historical', 
+            'animation',
+            'romance'
+        );
+    }
+
     $filtered_search = False;
     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search_criteria"]) && isset($_GET["search_value"])) {
         $search_criteria = $_GET["search_criteria"];
@@ -48,103 +62,105 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            color: #f2f2f2;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+<style>
+body {
+    color: black;
+}
 
-        table, th, td {
-            border: 1px solid black;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
+table,
+th,
+td {
+    border: 1px solid black;
+}
 
-        th {
-            background-color: #f2f2f2;
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <div class="video-container">
-        <form action="" method="get"> 
-            Search by:
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: black;
+}
+</style>
+
+
+<div class="video-container" style="width: 100%; margin: 10px;">
+    <div style="margin-left: 700px">
+        <form action="" method="get">
             <select id="search_criteria" name="search_criteria">
-                <option value="title">title</option>
+                <option value="title"> Filter </option>
                 <option value="year">year</option>
                 <option value="genre">genre</option>
                 <option value="director">director</option>
                 <option value="default"> default </option>
             </select>
 
-            <input type="text" id="search_value" name="search_value" required="required">
+            <input type="text" id="search_value" name="search_value" required="required"
+                placeholder="search videos here">
         </form>
     </div>
-    <?php if (!$filtered_search): ?>
-        <?php if (empty($_SESSION['video_collection'])): ?>
-            <p> No videos available! </p>
-        <?php else: ?>
-        <table>
-            <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Director</th>    
-            <tr>
-            <?php foreach($_SESSION['video_collection'] as $index => $video): ?>
-                <tr>
-                    <td>
-                        <?php if (!$video->is_set_thumbnail()): ?> 
-                            <img src="../thumbnails/no-poster-available.jpg" alt="Image" width="100" height="100"> 
-                        <?php else: ?>
-                           <img src="<?php echo $video->get_thumbnail(); ?>" alt="Image" width="100" height="100"> 
-                        <?php endif; ?>
-                    </td>
-                    <td> <?php echo $video->get_title(); ?> </td>
-                    <td> <?php echo $video->get_director(); ?> </td>
-                    <td> <a href="../video/video_details.php?index=<?php echo $index; ?>"> View Details </a> </td>
-                </tr>
-            <?php endforeach; ?> 
-        </table>
-        <?php endif; ?>
-    <?php else: ?>
-        <?php if (empty($search_results)): ?>
-            <p> No results found </p>
-        <?php else: ?>
-        <table>
-            <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Director</th>
-            </tr>
-            <?php foreach($search_results as $index => $video): ?>
-                <tr>
-                    <td>
-                        <?php if (!$video->is_set_thumbnail()): ?> 
-                            <img src="../thumbnails/no-poster-available.jpg" alt="Image" width="100" height="100"> 
-                        <?php else: ?>
-                           <img src="<?php echo $video->get_thumbnail(); ?>" alt="Image" width="100" height="100"> 
-                        <?php endif; ?>
-                    </td>
-                    <td> <?php echo $video->get_title(); ?> </td>
-                    <td> <?php echo $video->get_director(); ?> </td>
-                    <td> <a href="../video/video_details.php?index=<?php echo $index; ?>"> View Details </a> </td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    <?php endif; ?>
+</div>
+<?php if (!$filtered_search): ?>
+<?php if (empty($_SESSION['video_collection'])): ?>
+<p class="mt-5"> No videos available! </p>
+<?php else: ?>
+<table class="mt-4" style="width: 1000px; margin: auto">
+    <tr>
+        <th class="text-center">Image</th>
+        <th class="text-center"> Title</th>
+        <th class="text-center">Director</th>
+    <tr>
+        <?php foreach($_SESSION['video_collection'] as $index => $video): ?>
+    <tr>
+        <td class="text-center">
+            <?php if (!$video->is_set_thumbnail()): ?>
+            <img src="../thumbnails/no-poster-available.jpg" alt="Image" width="100" height="100">
+            <?php else: ?>
+            <img src="<?php echo $video->get_thumbnail(); ?>" alt="Image" width="100" height="100">
+            <?php endif; ?>
+        </td>
+        <td class="text-center"> <?php echo $video->get_title(); ?> </td>
+        <td class="text-center"> <?php echo $video->get_director(); ?> </td>
+        <td class="text-center"> <a href="../video/video_details.php?index=<?php echo $index; ?>"> View Details </a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<?php endif; ?>
+<?php else: ?>
+<?php if (empty($search_results)): ?>
+<p class="text-center" style="color: red"> No results found </p>
+<?php else: ?>
+<table>
+    <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Director</th>
+    </tr>
+    <?php foreach($search_results as $index => $video): ?>
+    <tr>
+        <td>
+            <?php if (!$video->is_set_thumbnail()): ?>
+            <img src="../thumbnails/no-poster-available.jpg" alt="Image" width="100" height="100">
+            <?php else: ?>
+            <img src="<?php echo $video->get_thumbnail(); ?>" alt="Image" width="100" height="100">
+            <?php endif; ?>
+        </td>
+        <td> <?php echo $video->get_title(); ?> </td>
+        <td> <?php echo $video->get_director(); ?> </td>
+        <td> <a href="../video/video_details.php?index=<?php echo $index; ?>"> View Details </a> </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<?php endif; ?>
+<?php endif; ?>
 </body>
+
 </html>

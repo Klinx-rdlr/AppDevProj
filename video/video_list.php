@@ -1,7 +1,5 @@
 <?php 
-    require_once('categories.php');
     include("../home/header.php");
-    session_start();
 
     class Video {
         private $title; 
@@ -127,58 +125,62 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
-            color: #f2f2f2;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    body {
+        color: black;
+    }
 
-        table, th, td {
-            border: 2px solid white;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            color: white;
-        }
+    table,
+    th,
+    td {
+        border: 2px solid white;
+    }
 
-        th {
-            background-color: #f2f2f2;
-            color: black;
-        }
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+        color: white;
+    }
 
-      
-   
+    th {
+        background-color: #f2f2f2;
+        color: black;
+    }
     </style>
 </head>
+
 <body>
-    <h1> <?php echo $_GET['genre']; ?> </h1>
-    <table>
-        
-       <tr>
+    <h1 class="text-center"> <?php echo $_GET['genre']; ?> </h1>
+    <table class="mt-3" style="width: 1000px; margin: auto">
+
+        <tr>
             <th>Images</th>
             <th>Title</th>
             <th>Director</th>
-       </tr>
-        
-       <?php foreach($_SESSION['video_collection'] as $index => $video): ?>
-            <?php if (strtolower($video->get_genre()) == strtolower($_GET['genre'])): ?>
-                <tr>
-                    <td> <img src="<?php echo $video->get_thumbnail(); ?>" alt="image" width="100" height="100"> </td>
-                    <td> <?php echo $video->get_title(); ?> </td>
-                    <td> <?php echo $video->get_director(); ?> </td>
-                    <td> <a href="video_details.php?index=<?php echo $index; ?>"> View Details </a> </td>
-                </tr>
-            <?php endif; ?>
+        </tr>
+
+        <?php foreach($_SESSION['video_collection'] as $index => $video): ?>
+        <?php if (strtolower($video->get_genre()) == strtolower($_GET['genre'])): ?>
+        <tr>
+            <td> <img src="<?php echo $video->get_thumbnail(); ?>" alt="image" width="100" height="100"> </td>
+            <td> <?php echo $video->get_title(); ?> </td>
+            <td> <?php echo $video->get_director(); ?> </td>
+            <td> <a href="video_details.php?index=<?php echo $index; ?>"> View Details </a> </td>
+        </tr>
+        <?php endif; ?>
         <?php endforeach; ?>
     </table>
 </body>
+
 </html>

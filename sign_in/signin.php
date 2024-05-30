@@ -12,9 +12,9 @@
 }
 </style>
 
-<div class="signIN card" style="width: 400px">
+<div class="signIN card" style="width: 400px; margin: 100px auto;">
     <div class="card-header">
-        <h3> Sign In</h3>
+        <h3 class="text-center"> Sign In</h3>
     </div>
     <form action="signin.inc.php" method="post">
         <div class="card-body">

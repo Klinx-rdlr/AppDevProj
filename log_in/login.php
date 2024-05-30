@@ -1,6 +1,6 @@
 <?php include_once "../home/header.php" ?>
 
-<div class="logIN card" style="width: 400px">
+<div class="logIN card" style="width: 400px; margin: 150px auto;">
     <div class="card-header">
         <h3 class="text-center"> Log In</h3>
     </div>

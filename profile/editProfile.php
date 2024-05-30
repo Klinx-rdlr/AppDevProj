@@ -5,7 +5,7 @@ include_once "profile_functions.php";
 ?>
 
 
-<div class="editProfile card mt-5" style="width: 600px; margin: auto; border: 2px solid red">
+<div class="editProfile card mt-5" style="width: 600px; margin: auto;">
     <div class="card-header">
         <p class="text-center" style="margin: 0px"> Edit Profile </p>
     </div>
@@ -45,7 +45,7 @@ include_once "profile_functions.php";
             </div>
         </div>
         <div class="card-footer">
-            <input class="btn btn-block btn-primary" type="submit" value="Edit">
+            <input class="btn btn-block btn-dark" type="submit" value="Edit">
         </div>
     </form>
 

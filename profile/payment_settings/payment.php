@@ -7,9 +7,9 @@ if (isset($_POST['payment_option'])) {
 }
 ?>
 
-<div class="row">
+<div class="row" style="width: 1500px; margin: auto;">
 
-    <div class="paymentList col card mt-5" style="width: 600px; margin: auto; border: 2px solid green">
+    <div class="paymentList col card mt-5 mr-3" style="width: 500px; border:">
         <div class="card-header">
             <p class="text-center" style="margin: 0px"> Your Payment Methods </p>
         </div>
@@ -32,7 +32,6 @@ if (isset($_POST['payment_option'])) {
                     <p style="margin: 0;">
                         <?= substr($payments['Paypal_Email'], 0, 3) . str_repeat('*', strlen($payments['Paypal_Email']) - 6) . substr($payments['Paypal_Email'], -5) ?>
                     </p>
-                    </p>
                     <button class='btn btn-block btn-primary' style="width: 100px;"
                         onclick="location.href = 'payment_details.php?id=<?php echo $id; ?>'"> Check
                     </button>
@@ -47,13 +46,10 @@ if (isset($_POST['payment_option'])) {
                 <?php endif; ?>
             </div>
         </div>
-        <div class="card-footer">
-
-        </div>
 
     </div>
 
-    <div class="Payment col card mt-5" style="width: 600px; margin: auto; border: 2px solid red">
+    <div class="Payment col card mt-5" style="width: 400px; border:">
         <div class="card-header">
             <p class="text-center" style="margin: 0px"> Payment Information </p>
         </div>
@@ -149,7 +145,7 @@ EOT;
     };
 ?>
 
-                <div class="card-footer">
+                <div class="card-footer mt-4">
                     <button class='btn btn-block btn-primary mt-3' type='submit'> Enter </button>
                     <?php
  if(isset($_GET["error"])) {

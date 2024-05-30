@@ -22,14 +22,13 @@ $userProfile = getUserProfile();
         $phoneNumber = getProfilePhone();
         $birthday = getProfileBirthday();    
     echo<<<EOT
-    <div class="Profile card mt-5" style="width: 600px; margin: auto; border: 2px solid red">
+    <div class="Profile card mt-5" style="width: 600px; margin: auto;">
     <div class="card-header">
         <p class="text-center" style="margin: 0px"> Profile Information </p>
     </div>
     <div class="card-body">
         <div class="form-group">
             <p> First Name: $firstname </p>
-            <p> First Name: $userPayment </p>
 </div>
 <div class="form-group">
             <p> Last Name: $lastname</p>
@@ -49,7 +48,7 @@ $userProfile = getUserProfile();
 </div>
   
 <div class="card-footer">
-<button class="btn btn-block btn-primary" onclick="location.href='editProfile.php'"> Edit Profile </button>
+<button class="btn btn-block btn-dark" onclick="location.href='editProfile.php'"> Edit Profile </button>
 </div>
         </div>
 EOT;
