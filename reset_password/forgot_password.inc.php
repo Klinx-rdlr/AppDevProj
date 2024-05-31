@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $mail = require __DIR__ ."../../mailer.php";
 
-        $mail->setFrom("xyzvideorentals@gmail.com");
+        $mail->setFrom("xyzvideorentals@gmail.com,", "XYZ VIDEO RENTRALS");
         $mail->addAddress($email);
         $mail->setSubject = "Password Reset";
         $mail->Body =  <<<END

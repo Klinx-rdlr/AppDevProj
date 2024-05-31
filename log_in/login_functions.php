@@ -33,9 +33,7 @@ function loginUser($name, $password) {
 function getUserName($name){
     foreach($_SESSION["userList"] as $users){
         if($name == $users['Email']){
-            return $users['Username'];
-        }else if($name == $users['Username']){
-            return $users['Username'];
+            return $users['Email'];
         }
     }
     return null;

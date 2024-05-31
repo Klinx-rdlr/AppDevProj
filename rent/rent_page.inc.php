@@ -39,6 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $newCart['Item_No'] = $copies;
         
         
+        if (!isset($_SESSION['cartList'])) {
+            $_SESSION['cartList'][$_SESSION['userID']] = [];
+        }
+        
         $cart = $_SESSION['cartList'][$_SESSION['userID']];
 
         if (!array_key_exists('Item_Tracker', $cart)) {

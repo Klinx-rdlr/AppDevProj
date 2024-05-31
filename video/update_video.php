@@ -92,15 +92,69 @@
         exit;
     }
 
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="file"],
+    form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    form input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    form input[type="submit"]:hover {
+        background-color: #555;
+    }
+
+    label {
+        font-weight: bold;
+    }
+    </style>
 </head>
+
 <body>
     <?php 
         $video = $_SESSION['video_collection'][$index];
@@ -110,9 +164,8 @@
     <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="update">
         <input type="hidden" name="index" value="<?php echo $_GET["index"]?>">
-        
-        Title: <input type="text" id="title" name="title" required
-            value="<?php echo $video->get_title();?>"> <br>
+
+        Title: <input type="text" id="title" name="title" required value="<?php echo $video->get_title();?>"> <br>
         Director: <input type="text" id="director" name="director" required="required"
             value="<?php echo $video->get_director();?>"> <br>
         Summary: <textarea name="summary" id="summary" rows="5" cols="60">
@@ -120,22 +173,20 @@
         </textarea> <br>
         Starring: <input type="text" id="starring" name="starring" required
             value="<?php echo $video->get_starring();?>"> <br>
-        Genre: <input type="text" id="genre" name="genre" required
-            value="<?php echo $video->get_genre();?>"> <br>
+        Genre: <input type="text" id="genre" name="genre" required value="<?php echo $video->get_genre();?>"> <br>
         Year Released: <input type="text" id="year" name="year" minlength='4' maxlength='4' required
             value="<?php echo $video->get_release_year();?>"> <br>
-        DVD: <input type="number" id="copies" name="copies" required
-            value="<?php echo $video->get_dvd();?>"> <br>
-        Blu-ray: <input type="number" id="copies" name="copies" required
-            value="<?php echo $video->get_blu_ray();?>"> <br>
-        UHD: <input type="number" id="copies" name="copies" required
-            value="<?php echo $video->get_uhd();?>"> <br>
-        Digital: <input type="number" id="copies" name="copies" required
-            value="<?php echo $video->get_digital();?>"> <br>
+        DVD: <input type="number" id="copies" name="copies" required value="<?php echo $video->get_dvd();?>"> <br>
+        Blu-ray: <input type="number" id="copies" name="copies" required value="<?php echo $video->get_blu_ray();?>">
+        <br>
+        UHD: <input type="number" id="copies" name="copies" required value="<?php echo $video->get_uhd();?>"> <br>
+        Digital: <input type="number" id="copies" name="copies" required value="<?php echo $video->get_digital();?>">
+        <br>
 
         Video Thumbnail: <input type="file" id="thumbnail" name="thumbnail"> <br>
         <input type="submit" value="Update Video">
     </form>
 
 </body>
+
 </html>

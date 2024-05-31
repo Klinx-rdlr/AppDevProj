@@ -20,25 +20,77 @@
 </head>
 
 <style>
+body {
+    font-family: Poppins, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 table,
 th,
 td {
-    border: 1px solid black;
+    border: 1px solid #ccc;
 }
 
 th,
 td {
-    padding: 10px;
+    padding: 12px;
     text-align: left;
 }
 
 th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+button,
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+img {
+    border-radius: 8px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 </style>
 
@@ -90,7 +142,6 @@ th {
         <?php endforeach; ?>
     </table>
     <?php endif; ?>
-    <a href="../home/index.php">Home</a>
 </body>
 
 </html>

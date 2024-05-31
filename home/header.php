@@ -67,7 +67,7 @@
                 echo '  <div class="dropdown-content">';
                 echo '    <a href="/appdevproj/profile/profile.php"> Profile </a>';
                 echo '    <a href="/appdevproj/profile/payment_settings/payment.php"> Payment Settings </a>';
-                echo '    <a href="#"> Purchase History </a>';
+                echo '    <a href="/appdevproj/profile/purchase.php"> Purchase History </a>';
                 echo '  </div>';
                 echo '</div>';
                 echo '<button onclick="location.href = \'/appdevproj/cart/cart.php\';"> CART </button>';

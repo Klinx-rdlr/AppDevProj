@@ -14,7 +14,6 @@ function addNewProfile($userID){
         'Address' => "",
         'Phone Number' => "",
         'Birthday' => "",
-        'VideosAdded' => "",
         'VideosRented' => ""
     );
     $_SESSION["profileList"][$userID] = $newProfile;
@@ -30,7 +29,6 @@ function editProfile($status, $firstName, $lastName, $middleName, $address, $pho
         'Address' => $address,
         'Phone Number' => $phone_number,
         'Birthday' => $birthday,
-        'VideosAdded' => "",
         'VideosRented'=> "",
     );
 
