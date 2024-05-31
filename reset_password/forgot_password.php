@@ -25,7 +25,7 @@
                         }
                       } 
             ?>
-            <input class="btn btn-block btn-primary" type="submit" value="Sned">
+            <input class="btn btn-block btn-primary" type="submit" value="Send">
         </div>
     </form>
 </div>

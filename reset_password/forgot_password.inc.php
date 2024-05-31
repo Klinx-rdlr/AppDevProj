@@ -11,10 +11,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($result){
 
         $mail = require __DIR__ ."../../mailer.php";
-
-        $mail->setFrom("xyzvideorentals@gmail.com,", "XYZ VIDEO RENTRALS");
+        
         $mail->addAddress($email);
-        $mail->setSubject = "Password Reset";
+        $mail-> Subject = "Password Reset";
         $mail->Body =  <<<END
         <a href="http://localhost/appdevproj/reset_password/reset_password.php?token=$token"> Click Here </a>
         to reset your password.
