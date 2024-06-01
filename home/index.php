@@ -109,7 +109,7 @@ th {
 </div>
 <?php if (!$filtered_search): ?>
 <?php if (empty($_SESSION['video_collection'])): ?>
-<p class="mt-5"> No videos available! </p>
+
 <?php else: ?>
 <table class="mt-4" style="width: 1000px; margin: auto">
     <tr>

@@ -2,7 +2,9 @@
     require('video.classes.php');
     require('categories.php');
     require_once('../admin_logs/admin_action.classes.php');
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     
     if (!isset($_SESSION['video_collection'])) {
         $_SESSION['video_collection'] = [];

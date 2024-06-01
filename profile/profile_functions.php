@@ -1,15 +1,12 @@
     <?php
 
     function getUserProfile() {
-        if (isset($_SESSION["profileList"][$_SESSION["userID"]])) {
+        if (isset($_SESSION["userID"]) && isset($_SESSION["profileList"][$_SESSION["userID"]])) {
             return $_SESSION["profileList"][$_SESSION["userID"]];
         } else {
             return null; 
         }   
     }
-
-
-
 
     function getProfileStatus(){
         $profile = getUserProfile();
@@ -35,6 +32,32 @@
         $profile = getUserProfile();
         return $profile ? $profile['Address'] : null;
     }
+
+    function getHouseNo() {
+        $profile = getUserProfile();
+        return $profile ? $profile['House No'] : null;
+    }
+
+    function getStreet() {
+        $profile = getUserProfile();
+        return $profile ? $profile['Street'] : null;
+    }
+
+    function getBaranggay() {
+        $profile = getUserProfile();
+        return $profile ? $profile['Baranggay'] : null;
+    }
+
+    function getCity() {
+        $profile = getUserProfile();
+        return $profile ? $profile['City'] : null;
+    }
+
+    function getPostal() {
+        $profile = getUserProfile();
+        return $profile ? $profile['Postal'] : null;
+    }
+
     
     function getProfilePhone(){
         $profile = getUserProfile();

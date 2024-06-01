@@ -18,7 +18,11 @@ $userProfile = getUserProfile();
         $lastname = getProfileLastname();
         $middlename = getProfileMiddlename();
         $firstname = getProfileFirstname();
-        $address = getProfileAddress();
+        $houseno = getHouseNo();
+        $street = getStreet();
+        $baranggay = getBaranggay();
+        $city = getCity();
+        $postal = getPostal();
         $phoneNumber = getProfilePhone();
         $birthday = getProfileBirthday();    
     echo<<<EOT
@@ -37,7 +41,19 @@ $userProfile = getUserProfile();
             <p> Middle Name: $middlename </p>
 </div>
 <div class="form-group">
-    <p> Address: $address </p>
+    <p> House No: $houseno </p>
+</div>
+<div class="form-group">
+    <p> Street Name: $street </p>
+</div>
+<div class="form-group">
+    <p> Baranggay: $baranggay </p>
+</div>
+<div class="form-group">
+    <p> Municipality or City No: $city </p>
+</div>
+<div class="form-group">
+    <p> Postal: $postal </p>
 </div>
 <div class="form-group">
     <p> Phone Number: $phoneNumber </p>

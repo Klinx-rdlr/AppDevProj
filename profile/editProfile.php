@@ -27,12 +27,37 @@ include_once "profile_functions.php";
                 <input class="form-control" type="text" name="middlename" value="<?php echo getProfileMiddlename(); ?>"
                     required>
             </div>
+            
             <div class="form-group">
                 <label for=""> Address: </label>
-                <input class="form-control" type="text" name="address"
-                    placeholder="House No. / Street Name / Baranggay / Municipality or City / Postal code"
-                    value="<?php echo getProfileAddress(); ?>" required>
             </div>
+
+            <!-- New Fields  -->
+            <div class="form-group">
+                <input class="form-control" type="text" name="houseno"
+                    placeholder="House No." value="<?php echo getHouseNo(); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="text" name="street"
+                    placeholder="Street Name" value="<?php echo getStreet(); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="text" name="baranggay"
+                    placeholder="Baranggay" value="<?php echo getBaranggay(); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="text" name="city"
+                    placeholder="Municipality or City" value="<?php echo getCity(); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="number" name="postal"
+                    placeholder="Postal Code" value="<?php echo getPostal(); ?>" maxlength="4" required>
+            </div>
+
             <div class="form-group">
                 <label for=""> Phone Number: </label>
                 <input class="form-control" type="text" name="phone_number" placeholder="+63"

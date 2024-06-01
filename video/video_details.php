@@ -101,8 +101,16 @@
 
     <!-- link to Rent Page -->
     <!-- Make sure Rent Page can be only accessed if user is logged in -->
+    <?php 
+        if (isset($_SESSION["userID"])) {
+            $location = "../rent/rent_page.php?index=$index";
+        }
+        else {
+            $location = '../log_in/login.php';
+        }
+    ?>
     <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
-        onclick="location.href='../rent/rent_page.php?index=<?php echo $index ?>'" type="button">
+        onclick="location.href='<?php echo $location; ?>'" type="button">
         Rent
     </button> <br>
 

@@ -143,14 +143,14 @@
     table,
     th,
     td {
-        border: 2px solid white;
+        border: 2px solid black;
     }
 
     th,
     td {
         padding: 10px;
         text-align: left;
-        color: white;
+        color: black;
     }
 
     th {
