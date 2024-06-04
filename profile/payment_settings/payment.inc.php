@@ -1,6 +1,6 @@
 <?php
     include_once "payment_functions.php";
-
+    require_once "../../user_activity/user_activity.classes.php";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(isset($_POST['payment_option'])){
@@ -30,6 +30,8 @@
                 $result = addUserPaymentPaypal($paymentName, $paypalEmail, $paypalPassword);
 
                 if($result){
+                    $_SESSION['user_activity'][] = new UserActivity($_SESSION['username'], 
+                            "Added Payment Option",  date("Y-m-d h:i:sa"));
                     header("location: payment.php?error=none-paypal");
                 }else{
                     header("location: payment.php?error=status6");

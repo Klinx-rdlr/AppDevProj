@@ -50,13 +50,15 @@ include_once "../home/header.php";
         <table class="mt-5 table table-bordered">
             <?php 
                     $payment_modes = [];
-                    foreach ($_SESSION['profileList'][$_SESSION['userID']]['Payments']['Payment_Details'] as $payment) {
-                        $newPayment = [];
-                        $newPayment['Payment_Name'] = $payment['Payment_Name'];
-                        $newPayment['Payment_Type'] = $payment['Payment_Type'];
-                        
-                        $payment_modes[] = $newPayment;
-                    }  
+                    if (!empty($_SESSION['profileList'][$_SESSION['userID']]['Payments'])) {
+                        foreach ($_SESSION['profileList'][$_SESSION['userID']]['Payments']['Payment_Details'] as $payment) {
+                            $newPayment = [];
+                            $newPayment['Payment_Name'] = $payment['Payment_Name'];
+                            $newPayment['Payment_Type'] = $payment['Payment_Type'];
+                            
+                            $payment_modes[] = $newPayment;
+                        }  
+                    }
                 ?>
             <tr class="">
                 <th class="text-center bg-dark">
@@ -97,6 +99,7 @@ include_once "../home/header.php";
 
                     </td>
                 </tr>
+                
 
 
         </table>

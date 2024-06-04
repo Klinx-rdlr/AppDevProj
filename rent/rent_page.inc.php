@@ -4,9 +4,17 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $index = $_GET['index'];
-
     $video = $_SESSION['video_collection'][$index];
 
+    $dvd_copies = $_POST["dvd"]; 
+    $blu_ray_copies = $_POST["blu_ray"]; 
+    $uhd_copies = $_POST["uhd"]; 
+    $digital_copies = $_POST["digital"];
+
+    $dvd_price 
+    $blu_ray_price 
+    $uhd_price
+    $digital_price 
     if (isset($_POST['type']) && isset($_POST['copies'])) {
         $version_type = $_POST['type'];
         $copies = intval($_POST['copies']);

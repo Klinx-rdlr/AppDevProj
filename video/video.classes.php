@@ -118,5 +118,10 @@
         public function is_set_thumbnail() {
             return isset($this->thumbnail);
         }
+
+        public function is_available() {
+            $total_copies = $this->dvd + $this->blu_ray + $this->uhd + $this->digital;
+            return $total_copies > 0;
+        }
     }
 ?>

@@ -109,11 +109,18 @@
             $location = '../log_in/login.php';
         }
     ?>
-    <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
-        onclick="location.href='<?php echo $location; ?>'" type="button">
-        Rent
-    </button> <br>
 
+    <?php if (!$video->is_available()): ?>
+        <button class="btn btn-block rounded-pill px-3" style="background-color:red; width: 200px; margin-left: 750px"
+            type="button">
+            Rent Not Available
+        </button> <br>
+    <?php else: ?>
+        <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
+            onclick="location.href='<?php echo $location; ?>'" type="button">
+            Rent
+        </button> <br>
+    <?php endif; ?>
     <button class="btn btn-light rounded-pill px-3 mt-3" style="width: 200px; margin-left: 750px"
         onclick="location.href='../home/index.php'"> Return Home </button>
 

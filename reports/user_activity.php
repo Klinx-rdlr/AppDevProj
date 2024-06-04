@@ -25,6 +25,8 @@
     </style>
 </head>
 <body>
+    <?php if (empty($_SESSION["user_activity"])): ?> 
+    <?php else: ?>  
     <table>
         <tr>
             <th>Username</th>
@@ -38,8 +40,9 @@
                 <td><?php echo $activity->get_date_time(); ?></td>
             </tr>
         <?php endforeach; ?>
+        
     </table>
-
+    <?php endif; ?>
     <a href="reports.php"> Go back </a>
 </body>
 </html>

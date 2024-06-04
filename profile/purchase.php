@@ -18,25 +18,27 @@
                 <th class="text-center bg-dark"> Date </th>
                 <th class="text-center bg-dark"> Return Date </th>
             </tr>
-            <?php foreach($_SESSION['profileList'][$_SESSION['userID']] as $user): ?>
+            <?php foreach($_SESSION['profileList'][$_SESSION['userID']]['VideosRented'] as $video): ?>
             <tr>
                 <td class="text-center">
-                    <?php echo $user['VideosRented']  ?>
+                    <?php echo $video  ?>
                 </td>
                 <td class="text-center"> 31/05/2024 </td>
                 <td class="text-center"> 30/06/2024 </td>
             </tr>
             <?php endforeach; ?>
         </table>
+        <div class="card-footer">
+            <button class="btn btn-block btn-dark" onclick="location.href = '/appdevproj/cart/checkout.php'"> 
+                Pay
+            </button>
+        </div>
     </div>
     <?php else: ?>
     <p class="text-center mt-3"> No purchase made yet </p>
     <?php endif; ?>
 
-    <div class="card-footer">
-        <button class="btn btn-block btn-dark" onclick="location.href = '/appdevproj/cart/checkout.php'"> Pay
-        </button>
-    </div>
+
 
 
 </div>

@@ -4,12 +4,12 @@ session_start();
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $total = intval($_POST['total']);
-    $cash_value = intval($_POST['cash_value']);
+   
     $duration = $_POST['duration'];
     $payment_option = $_POST['payment_option'];
     
     if(isset($_POST['cash_value']) && isset( $_POST['total'])){
-
+        $cash_value = intval($_POST['cash_value']);
 
         if($cash_value >= $total){
             $change = $cash_value - $total;

@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         $_SESSION["adminID"] = "1";
         header("location: ../home/index.php?error=none");
-        $_SESSION['admin_logs'][] = new AdminAction($adminID, "Logged In", date("Y-m-d h:i:sa"), "No Further Details");
+        $_SESSION['admin_logs'][] = new AdminAction($_SESSION["adminID"], "Logged In", date("Y-m-d h:i:sa"), "No Further Details");
     }else{
         header("location: admin_login.php?error=status3"); //status 3 - wrong input
     }

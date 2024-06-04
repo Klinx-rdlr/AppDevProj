@@ -4,7 +4,7 @@
 
     if (!isset($_SESSION['genre_categories'])) {
         $_SESSION['genre_categories'] = array(
-            "ACTION", 
+            "action", 
             "drama",
             "comedy",
             "adventure",
@@ -52,6 +52,7 @@
             <div class="home d-flex" style="margin-right: 380px">
                 <a href="/appdevproj/home/index.php" class="head mr-4">HOME</a>
                 <a href="/appdevproj/video/browse_category.php" class="head mr-4"> CATEGORIES </a>
+                <a href="/appdevproj/rent/rental_history.php" class="head mr4-"> RENTAL HISTORY </a>
             </div>
             <div class="search" style="margin-right: 380px">
             </div>
