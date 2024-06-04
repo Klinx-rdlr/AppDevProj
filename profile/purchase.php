@@ -28,11 +28,7 @@
             </tr>
             <?php endforeach; ?>
         </table>
-        <div class="card-footer">
-            <button class="btn btn-block btn-dark" onclick="location.href = '/appdevproj/cart/checkout.php'"> 
-                Pay
-            </button>
-        </div>
+        
     </div>
     <?php else: ?>
     <p class="text-center mt-3"> No purchase made yet </p>
