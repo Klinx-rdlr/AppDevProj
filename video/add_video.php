@@ -1,6 +1,6 @@
 <?php 
+    include_once "../home/header.php";
     require('video.classes.php');
-    require('categories.php');
     require_once('../admin_logs/admin_action.classes.php');
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -73,30 +73,110 @@
    
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-    <form action="" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="action" value="add">
-        Title: <input type="text" id="title" name="title" required> <br>
-        Director: <input type="text" id="director" name="director" required> <br>
-        Summary: <textarea name="summary" id="summary" rows="5" cols="60"></textarea> <br>
-        Starring: <input type="text" id="starring" name="starring"> <br>
-        Genre: <input type="text" id="genre" name="genre" required> <br>
-        Year Released: <input type="text" id="year" name="year" minlength='4' maxlength='4' required> <br>
-        No. of DVDs: <input type="number" id="dvd" name="dvd"  required> <br>
-        No. of Blu-rays: <input type="number" id="blu_ray" name="blu_ray" required> <br>
-        No. of UHDs: <input type="number" id="uhd" name="uhd" required> <br>
-        No. of Digital: <input type="number" id="digital" name="digital"  required> <br>
-        Video Thumbnail: <input type="file" id="thumbnail" name="thumbnail"> <br>
-        <input type="submit" value="Add Video">
-    </form>
-    <a href="video_catalog.php">Back to Video Catalog</a>
-    
+    <script src="add_video.js"></script>
+    <div class="row" style="width: 100%; margin: auto; margin-left: 140px; padding: 20px 80px 0px 80px;">
+        <div class="col-6 card mt-2 mr-5 p-0" style="width: 600px;">
+            <div class="card-header p-0">
+                <p class="p-0 mt-1 mb-0 text-center" style="font-size: 22px;"> Add Video </p>
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="add">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for=""> Title: </label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for=""> Director:</label>
+                        <input type="text" id="director" name="director" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="summary"> Summary: </label>
+                        <textarea name="summary" id="summary" rows="5" cols="60"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            Starring: </label>
+                        <input type="text" id="starring" name="starring">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            Genre: </label>
+                        <input type="text" id="genre" name="genre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            Year Released: </label>
+                        <input type="text" id="year" name="year" minlength='4' maxlength='4' required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            No. of DVDs:</label>
+                        <input type="number" id="dvd" name="dvd" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            No. of Blu-rays: </label>
+                        <input type="number" id="blu_ray" name="blu_ray" required> <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            No. of UHDs:</label>
+                        <input type="number" id="uhd" name="uhd" required> <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            No. of Digital:</label>
+                        <input type="number" id="digital" name="digital" required> <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            Video Thumbnail:</label>
+                        <input type="file" id="thumbnail" name="thumbnail"> <br>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <input class="btn btn-block btn-dark" type="submit" value="Add Video"
+                        style="width: 500px; margin-left: 35px;">
+                    <button class="btn btn-block btn-dark" onclick="location.href='video_catalog.php'"
+                        style="width: 500px; margin-left: 35px;">Back to Video
+                        Catalog </button>
+                </div>
+            </form>
+
+
+        </div>
+
+        <div class="col-6 card mt-2 p-0" style="width: 600px; height: 600px">
+            <div class="card-header p-0">
+                <p class="p-0 mt-1 mb-1 text-center" style="font-size: 22px;"> Thumbnail Preview </p>
+            </div>
+
+            <div class="card-body bg-dark">
+                <div class="img-container mt-1" style="margin-left: 135px;">
+                    <img id="img-preview" src="" alt=""
+                        style="height: 450px; box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+
+    </div>
+    </div>
 </body>
+
 </html>
