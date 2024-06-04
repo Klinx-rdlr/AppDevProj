@@ -24,16 +24,16 @@ $title = $_SESSION['video_collection'][$index]->get_title();
             <label for=""> Format </label> <br> 
             
             DVD - Available: <?php echo $dvd_copies; ?> <br>
-            <input type="number" name="dvd" id="dvd" min=0 max="<?php echo $dvd_copies;?>">  <br> 
+            <input type="number" name="dvd" id="dvd" min="0" max="<?php echo $dvd_copies;?>" value=0>  <br> 
             
             Blu-ray - Available: <?php echo $blu_ray_copies; ?> <br> 
-            <input type="number" name="blu_ray" id="blu_ray" min=0 max="<?php echo $blu_ray_copies;?>"> <br>
+            <input type="number" name="blu_ray" id="blu_ray" min="0" max="<?php echo $blu_ray_copies;?>" value=0> <br>
 
             UHD - Available: <?php echo $uhd_copies; ?> <br> 
-            <input type="number" name="uhd" id="uhd" min=0 max="<?php echo $uhd_copies;?>"> <br>
+            <input type="number" name="uhd" id="uhd" min="0" max="<?php echo $uhd_copies;?>" value=0> <br>
 
             Digital - Available: <?php echo $digital_copies; ?> <br> 
-            <input type="number" name="digital" id="digital" min=0 max="<?php echo $digital_copies;?>"> <br> <br>
+            <input type="number" name="digital" id="digital" min="0" max="<?php echo $digital_copies;?>" value=0> <br> <br>
 
             <label for=""> Rent Duration </label> <br> 
 

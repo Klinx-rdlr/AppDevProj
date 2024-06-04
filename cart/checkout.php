@@ -13,37 +13,49 @@ include_once "../home/header.php";
 ?>
 
 
+<style>
+    .table td {
+        text-align: center;
+    }
+</style>
 
 <div class="card mt-5" style="margin: auto; width: 900px">
 
     <div class="card-header">
         <h1 class="text-center"> Checkout </h1>
     </div>
+
     <div class="card-body" style="height: 600px; ">
         <table class="mt-4 table table-bordered" style="margin: auto">
             <tr>
-                <th class="text-center bg-dark"> Total Amount</th>
+                <th class="text-center bg-dark"> Item</th>
+                <th class="text-center bg-dark"> No. of Pieces </th>
                 <th class="text-center bg-dark"> Rented Videos Duration</th>
+                <th class="text-center bg-dark"> Due Date</th>
+                <th class="text-center bg-dark"> Amount </th>
+            </tr>
+            <?php $total = 0; ?>
+            <?php foreach($_SESSION['cartList'] as $index => $cart): ?>
+            <?php foreach($cart['Items'] as $item): ?>
+                <tr>
+                    <?php 
+                        // $duration = date('Y-m-d', strtotime('+30 days'));
+                        // $videos = [];
+                        $total += $item['Price'];
+                        echo "<td>" . $item['Title'] . ' - ' . $item['Item_Type'] . "</td>"; 
+                        echo "<td>" . $item['Item_No'] . "</td>"; 
+                        echo "<td>" . $item['Duration'] . " day/s" . "</td>"; 
+                        echo "<td>" . date('Y-m-d', strtotime('+'. $item['Duration'] . 'days')) . "</td>";
+                        echo "<td>" . $item['Price'] . "</td>";
+                    ?>
+                </tr>
+            <?php endforeach; ?>
+            <?php endforeach; ?>
             <tr>
-                <?php 
-                        $duration = date('Y-m-d', strtotime('+30 days'));
-                        $total = 0; 
-                        $videos = [];
-                                            
-                        foreach($_SESSION['cartList'] as $index => $cart){
-                        foreach($cart['Items'] as $item){
-                            $total += $item['Price'];
-                            $videos[] = $item['Title']; 
-                        }  
-                        }
-                        ?>
-            <tr>
-                <td class="text-center">
-                    <?php echo $total  ?> PHP
+                <td class="text-center" colspan="4">
+                    
                 </td>
-                <td class="text-center">
-                    <?php echo $duration ?>
-                </td>
+                <td> <?php echo "Total Amount: ₱" . $total  ?> </td>
             </tr>
         </table>
 
@@ -92,16 +104,15 @@ include_once "../home/header.php";
                         <label for=""> Amount: </label>
                         <input type="text" name="cash_value">
 
-                        <?php endif ?>
-                        <input type="hidden" name="total" value="<?php echo $total ?>">
-                        <input type="hidden" name="duration" value="<?php echo $duration?>">
-                        <input type="hidden" name="payment_option" value="<?php echo $_POST['payment_option']?>">
+                        <?php endif; ?>
+                        <input type="hidden" name="total" value="<?php echo $total; ?>">
+                        <input type="hidden" name="duration" value="<?php echo $duration; ?>">
+                        <input type="hidden" name="payment_option" value="<?php echo $_POST['payment_option']; ?>">
 
                     </td>
                 </tr>
                 
-
-
+           
         </table>
     </div>
 
