@@ -37,14 +37,17 @@ include_once "../home/header.php";
             <?php endforeach; ?>
             <?php endforeach; ?>
         </table>
+        <div class="card-footer">
+      
+        </div>
     </div>
+    <button class="btn btn-block btn-dark" onclick="location.href = '/appdevproj/cart/checkout.php'"> 
+            Pay
+        </button>
     <?php else: ?>
     <p class="text-center mt-3"> Cart's Empty </p>
     <?php endif; ?>
 
-    <div class="card-footer">
-        <button class="btn btn-block btn-dark" onclick="location.href = '/appdevproj/cart/checkout.php'"> Pay
-        </button>
-    </div>
+   
 
 </div>
