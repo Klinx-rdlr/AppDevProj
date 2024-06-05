@@ -42,7 +42,9 @@ include_once "../home/header.php";
     <p class="text-center mt-3"> Cart's Empty </p>
     <?php endif; ?>
 
-   
-
+    <div class="card-footer">
+        <button class="btn btn-block btn-dark" onclick="location.href = '/appdevproj/cart/checkout.php'"> Pay
+        </button>
+    </div>
 
 </div>

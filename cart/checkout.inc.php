@@ -1,6 +1,6 @@
 <?php
-
-session_start();
+    require_once "../rent/rent.php";
+    session_start();
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $total = intval($_POST['total']);
@@ -24,6 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         foreach($_SESSION['cartList'] as $index => $cart) {
             foreach($cart['Items'] as $item) {
                 $itemRows .= "\nTitle: {$item['Title']}, Type: {$item['Item_Type']}, Copies: {$item['Item_No']}, Price: {$item['Price']}";
+                add_current_rent($_SESSION['userID'], $cart);
             }
         }
 

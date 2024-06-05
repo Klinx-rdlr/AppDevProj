@@ -2,6 +2,8 @@
 
 include_once "../home/header.php";
 
+
+
 //for debugging use;
 // echo "<pre>";
 // print_r($_SESSION['cartList'][$_SESSION['userID']]);
