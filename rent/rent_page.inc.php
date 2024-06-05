@@ -52,7 +52,7 @@
             $newCart['Price'] = $rent_duration * $blu_ray_price;
             $newCart['Item_Type'] = "Blu-ray";
             $newCart['Item_No'] = $blu_ray_copies;
-            $newCard['Duration'] = $rent_duration;
+            $newCart['Duration'] = $rent_duration;
 
             $cart['Items'][$cart['Item_Tracker']] = $newCart;
             $cart['Item_Tracker']++;
@@ -67,7 +67,7 @@
             $newCart['Price'] = $rent_duration * $uhd_price;
             $newCart['Item_Type'] = "UHD";
             $newCart['Item_No'] = $uhd_copies;
-            $newCard['Duration'] = $rent_duration;
+            $newCart['Duration'] = $rent_duration;
 
             $cart['Items'][$cart['Item_Tracker']] = $newCart;
             $cart['Item_Tracker']++;
@@ -82,7 +82,7 @@
             $newCart['Price'] = $rent_duration * $digital_price;
             $newCart['Item_Type'] = "Digital";
             $newCart['Item_No'] = $digital_copies;
-            $newCard['Duration'] = $rent_duration;
+            $newCart['Duration'] = $rent_duration;
 
             $cart['Items'][$cart['Item_Tracker']] = $newCart;
             $cart['Item_Tracker']++;
