@@ -30,8 +30,12 @@ function editProfile($status, $firstName, $lastName, $middleName,
 
     // Retrieve the existing VideosRented field if it exists
     $videoRents = null;
+    $movieHistory = null;
     if (isset($_SESSION['profileList'][$_SESSION['userID']]['VideosRented'])) {
         $videoRents = $_SESSION['profileList'][$_SESSION['userID']]['VideosRented'];
+    }
+    if (isset($_SESSION['profileList'][$_SESSION['userID']]['History'])) {
+        $movieHistory = $_SESSION['profileList'][$_SESSION['userID']]['History'];
     }
 
     // Create the new profile array, including the existing VideosRented field
@@ -47,7 +51,8 @@ function editProfile($status, $firstName, $lastName, $middleName,
         'Postal' => $postal,
         'Phone Number' => $phone_number,
         'Birthday' => $birthday,
-        'VideosRented' => $videoRents, // Ensure it retains the original VideosRented field
+        'VideosRented' => $videoRents,
+        'History' => $movieHistory, // Ensure it retains the original VideosRented field
     );
 
     // Update the profile in the session

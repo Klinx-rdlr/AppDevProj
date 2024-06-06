@@ -18,9 +18,9 @@ unset($_SESSION['adminID']);
 unset($_SESSION['username']);
 
 //for debugging use only (HARD RESET USERS)
-unset($_SESSION['userList']);
-unset($_SESSION['profileList']);
-unset($_SESSION['cartList']);
+// unset($_SESSION['userList']);
+// unset($_SESSION['profileList']);
+// unset($_SESSION['cartList']);
 
 
 
