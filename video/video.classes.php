@@ -115,6 +115,22 @@
             $this->thumbnail = $thumbnail;
         }
 
+        public function update_dvd($dvd) {
+            $this->dvd += $dvd;
+        }
+
+        public function update_blu_ray($blu_ray) {
+            $this->blu_ray += $blu_ray;
+        }
+
+        public function update_uhd($uhd) {
+            $this->uhd += $uhd;
+        }
+
+        public function update_digital($digital) {
+            $this->digital += $digital;
+        }
+
         public function is_set_thumbnail() {
             return isset($this->thumbnail);
         }

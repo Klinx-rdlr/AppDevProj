@@ -20,6 +20,12 @@
     public function getRentTracker() {
         return $this->rentTracker;
     }
+
+    public function removeRentVideo($index){
+        if (isset($this->rentList[$index])) {
+            unset($this->rentList[$index]);
+        }
+    }
 }
    
 ?>

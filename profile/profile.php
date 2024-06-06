@@ -7,16 +7,18 @@ include_once "../home/header.php";
 include_once "profile_functions.php";
 
 $userProfile = getUserProfile();
+
+//for debugging use only
 echo "<pre>";
-print_r($_SESSION['profileList'][$_SESSION['userID']]['VideosRented']);
+print_r($_SESSION['profileList'][$_SESSION['userID']]);
 echo "</pre>";
 ?>
 
 <div class="row p-0" style="margin: auto;">
-    <div class="col-1 mr-5" style="width: 600px">
+    <div class="col-1 mr-5" style="margin-left: 70px; width: 600px">
         <?php if(getProfileStatus() == 0): ?>
         <div class="row d-flex flex-column"
-            style="margin: 300px auto; width: 600px; height: 100px; background-color: white; border: 2px solid red; border-radius: 5px">
+            style="margin: 300px auto; width: 600px; height: 100px; background-color: white; border: 1px solid black; border-radius: 5px">
             <p class="text-center mt-2">Profile is not yet set, please set it</p>
             <button class="btn btn-block btn-primary" onClick="location.href = 'editProfile.php';"
                 style="margin: 0px auto; width: 300px">Continue</button>
@@ -74,7 +76,6 @@ echo "</pre>";
                 <button class="btn btn-block btn-dark" onclick="location.href='editProfile.php'"> Edit Profile </button>
             </div>
         </div>
-
         <?php endif; ?>
 
     </div>
@@ -84,7 +85,7 @@ echo "</pre>";
                 <p class="text-center"> Rented Videos </p>
             </div>
             <div class="card-body">
-                <?php if(!isset($_SESSION['profileList'][$_SESSION['userID']]['VideosRented'])): ?>
+                <?php if($_SESSION['profileList'][$_SESSION['userID']]['VideosRented']->getRentList() === null): ?>
                 <p class="text-center" style="color: red;"> No Videos Found </p>
                 <?php else: ?>
                 <table class="table table-bordered">
@@ -151,7 +152,7 @@ echo "</pre>";
 
 
                             </td>
-                            <td class="align-middle"> <?php echo $video->get_due_date() ?> </td>
+                            <td class="align-middle"> <?php echo $video->get_due_date()->format('Y-m-d'); ?> </td>
                             <td class="align-middle"> <button class="btn btn-block bg-olive"
                                     onclick="location.href='../rent/return.php?index=<?php echo $index ?>'">
                                     Return

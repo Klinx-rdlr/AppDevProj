@@ -12,11 +12,11 @@ class rent {
         $this->videoTitle = $videoTitle;
         $this->duration = $duration;
         $this->item = $item;
-        $this->purchase_date = date('Y-m-d');
+        $this->purchase_date = new DateTime(); // Save as DateTime object
 
-        $currentDate = new DateTime();
-        $currentDate->modify("+$duration days");
-        $this->due_date = $currentDate->format('Y-m-d');
+        $due_date = clone $this->purchase_date; // Clone to avoid modifying the original
+        $due_date->modify("+$duration days");
+        $this->due_date = $due_date;
     }
 
     public function get_item(){
