@@ -7,9 +7,9 @@ include_once "../home/header.php";
 // print_r($_SESSION['cartList'][$_SESSION['userID']]);
 // echo "</pre>";
 
-echo "<pre>";
-print_r($_SESSION['profileList'][$_SESSION['userID']]);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION['profileList'][$_SESSION['userID']]);
+// echo "</pre>";
 ?>
 
 

@@ -9,9 +9,9 @@ include_once "profile_functions.php";
 $userProfile = getUserProfile();
 
 //for debugging use only
-echo "<pre>";
-print_r($_SESSION['profileList'][$_SESSION['userID']]);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION['profileList'][$_SESSION['userID']]);
+// echo "</pre>";
 ?>
 
 <div class="row p-0" style="margin: auto;">

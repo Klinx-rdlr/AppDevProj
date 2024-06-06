@@ -2,6 +2,7 @@
 require_once "../rent/rentCollection.classes.php";
 require_once "../rent/rent.classes.php";
 require_once "../rent/VideoItem.classes.php";
+require_once "../profile/purchase/purchase.classes.php";
 require_once "checkout_functions.php";
 session_start();
 
@@ -38,10 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             try {
                 $currentCart = isset($cartList[$userID]['Items']) ? $cartList[$userID]['Items'] : [];
+               
                 if (!isset($_SESSION['profileList'][$userID]['VideosRented'])) {
                     $rentCollection = new rentCollection();
                     $_SESSION['profileList'][$userID]['VideosRented'] = $rentCollection;
                 }
+
+                if (!isset($_SESSION['profileList'][$userID]['History'])) {
+                    $_SESSION['profileList'][$userID]['History'] = array();
+                }
+
+                $movieHistory =  $_SESSION['profileList'][$userID]['History'];
                 $videosRented =  $_SESSION['profileList'][$userID]['VideosRented'];
 
                 foreach ($currentCart as $item) {
@@ -51,12 +59,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $bluray = isset($item['Item']['Blu-ray']['Quantity']) ? $item['Item']['Blu-ray']['Quantity'] : 0;
                     
                     $newVideo = new rent($item['Title'], $item['Duration'], new VideoItem($dvd, $uhd, $digital, $bluray));
+
+                    $newHistory = new purchase($item['Title'], $item['Duration']);
+
+                    $_SESSION['profileList'][$userID]['History'][] =  $newHistory;
+
                     $videosRented->addRentVideo($newVideo);
                 }
 
                 // Save the updated profileList back to the session
                 $_SESSION['profileList'][$userID]['VideosRented'] = $videosRented;
+
                 unset($_SESSION['cartList'][$userID]);
+
                 $mail->send();   
                 header("Location: checkout_confirmation.php?error=none");
             } catch (Exception $e) {
