@@ -26,22 +26,31 @@ function addNewProfile($userID){
 
 function editProfile($status, $firstName, $lastName, $middleName, 
                      $houseNo, $street, $baranggay, $city, $postal, 
-                     $phone_number, $birthday){
+                     $phone_number, $birthday) {
+
+    // Retrieve the existing VideosRented field if it exists
+    $videoRents = null;
+    if (isset($_SESSION['profileList'][$_SESSION['userID']]['VideosRented'])) {
+        $videoRents = $_SESSION['profileList'][$_SESSION['userID']]['VideosRented'];
+    }
+
+    // Create the new profile array, including the existing VideosRented field
     $newProfile = array(
-        'Status' => $status, //0 for new profile, 1 for edited profile
+        'Status' => $status, // 0 for new profile, 1 for edited profile
         'First Name' => $firstName,
         'Last Name' => $lastName,
         'Middle Name' => $middleName,
-        //'Address' => $address,
         'House No' => $houseNo,
         'Street' => $street,
         'Baranggay' => $baranggay,
         'City' => $city,
-        'Postal' => $postal,   
+        'Postal' => $postal,
         'Phone Number' => $phone_number,
         'Birthday' => $birthday,
+        'VideosRented' => $videoRents, // Ensure it retains the original VideosRented field
     );
 
-    $_SESSION["profileList"][$_SESSION["userID"]] = $newProfile;
+    // Update the profile in the session
+    $_SESSION['profileList'][$_SESSION['userID']] = $newProfile;
     return true;
 }
