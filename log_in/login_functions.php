@@ -30,11 +30,21 @@ function loginUser($name, $password) {
 }
 
 
-function getUserName($name){
+function getEmail($name){
     foreach($_SESSION["userList"] as $users){
         if($name == $users['Email']){
             return $users['Email'];
         }
     }
     return null;
+}
+
+
+function getUsername($name){
+    foreach ($_SESSION['userList'] as $user) {
+        if ($user['Email'] == $name) {
+            $username = $user['Username'];
+            return $username;
+        }
+    }
 }

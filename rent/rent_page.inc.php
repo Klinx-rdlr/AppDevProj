@@ -20,77 +20,58 @@
 
         $rent_duration = intval($_POST["rent_duration"]);
 
-        if (!isset($_SESSION['cartList'])) {
+        if (!isset($_SESSION['cartList'][$_SESSION['userID']])) {
             $_SESSION['cartList'][$_SESSION['userID']] = [];
         }
         
         $cart = $_SESSION['cartList'][$_SESSION['userID']];
-
+        
         if (!array_key_exists('Item_Tracker', $cart)) {
             $cart['Item_Tracker'] = 0;  // Initialize if not exists
         }
 
-        // track for each video format
-        if ($dvd_copies != 0) {
-            $newCart = []; 
-            $newCart['Title'] = $title;
-            $newCart['Price'] = $rent_duration * $dvd_price;
-            $newCart['Item_Type'] = "DVD";
-            $newCart['Item_No'] = $dvd_copies;
-            $newCart['Duration'] = $rent_duration;
+        $newCart = []; 
+        $newCart['Title'] = $title;
+        $newCart['Duration'] = $rent_duration;
+        $newCart['Due'] = date('Y-m-d', strtotime('+'. $rent_duration . 'days'));
+        $newCart['Item'] = array( 
+            'DVD' => array(
+                'Quantity' => $dvd_copies,
+                'Price' => $rent_duration * $dvd_price * $dvd_copies,
+            ),
+            'UHD' => array(
+                'Quantity' => $uhd_copies,
+                'Price' => $rent_duration * $uhd_price * $uhd_copies,
+            ), 
+            'Digital' => array(
+                'Quantity' => $digital_copies,
+                'Price' => $rent_duration * $digital_price * $digital_copies,
+            ), 
+            'Blu-ray' => array(
+                'Quantity' => $blu_ray_copies,
+                'Price' => $rent_duration * $blu_ray_price * $blu_ray_copies,
+            ), 
+        );
 
-            $cart['Items'][$cart['Item_Tracker']] = $newCart;
-            $cart['Item_Tracker']++;
-            $_SESSION['cartList'][$_SESSION['userID']] = $cart;
+        $cart['Items'][$cart['Item_Tracker']] = $newCart;
+        $cart['Item_Tracker']++;
+        $_SESSION['cartList'][$_SESSION['userID']] = $cart;
 
-            $video->set_dvd($video->get_dvd() - $dvd_copies);
-        }
-
-        if ($blu_ray_copies != 0) {
-            $newCart = []; 
-            $newCart['Title'] = $title;
-            $newCart['Price'] = $rent_duration * $blu_ray_price;
-            $newCart['Item_Type'] = "Blu-ray";
-            $newCart['Item_No'] = $blu_ray_copies;
-            $newCart['Duration'] = $rent_duration;
-
-            $cart['Items'][$cart['Item_Tracker']] = $newCart;
-            $cart['Item_Tracker']++;
-            $_SESSION['cartList'][$_SESSION['userID']] = $cart;
-
-            $video->set_blu_ray($video->get_blu_ray() - $blu_ray_copies);
-        }
-
-        if ($uhd_copies != 0) {
-            $newCart = []; 
-            $newCart['Title'] = $title;
-            $newCart['Price'] = $rent_duration * $uhd_price;
-            $newCart['Item_Type'] = "UHD";
-            $newCart['Item_No'] = $uhd_copies;
-            $newCart['Duration'] = $rent_duration;
-
-            $cart['Items'][$cart['Item_Tracker']] = $newCart;
-            $cart['Item_Tracker']++;
-            $_SESSION['cartList'][$_SESSION['userID']] = $cart;
-
-            $video->set_uhd($video->get_uhd() - $uhd_copies);
-        }
-
-        if ($digital_copies != 0) {
-            $newCart = []; 
-            $newCart['Title'] = $title;
-            $newCart['Price'] = $rent_duration * $digital_price;
-            $newCart['Item_Type'] = "Digital";
-            $newCart['Item_No'] = $digital_copies;
-            $newCart['Duration'] = $rent_duration;
-
-            $cart['Items'][$cart['Item_Tracker']] = $newCart;
-            $cart['Item_Tracker']++;
-            $_SESSION['cartList'][$_SESSION['userID']] = $cart;
-
-            $video->set_digital($video->get_digital() - $digital_copies);
-        }
+        $types = [
+            'dvd' => $dvd_copies,
+            'blu_ray' => $blu_ray_copies,
+            'uhd' => $uhd_copies,
+            'digital' => $digital_copies,
+        ];
         
+        foreach ($types as $type => $copies) {
+            if ($copies != 0) {
+                $getter = "get_{$type}";
+                $setter = "set_{$type}";
+                $video->$setter($video->$getter() - $copies);
+            }
+        }
+
         header("Location: rent_confirmation.php?index=$index");
         exit; 
     }

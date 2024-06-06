@@ -63,11 +63,11 @@
                if(isset($_SESSION["userID"])){
                 echo '<span class="d-flex align-items-center">';
                 echo '<div class="dropdown">';
-                echo '  <button class="dropbtn"> '. $_SESSION["username"] . '</button>';
+                echo '  <button class="dropbtn"> '. $_SESSION["user"] . '</button>';
                 echo '  <div class="dropdown-content">';
                 echo '    <a href="/appdevproj/profile/profile.php"> Profile </a>';
                 echo '    <a href="/appdevproj/profile/payment_settings/payment.php"> Payment Settings </a>';
-                echo '    <a href="/appdevproj/profile/purchase.php"> Purchase History </a>';
+                echo '    <a href="/appdevproj/profile/purchase/purchase.php"> Purchase History </a>';
                 echo '  </div>';
                 echo '</div>';
                 echo '<button onclick="location.href = \'/appdevproj/cart/cart.php\';"> CART </button>';
@@ -76,7 +76,6 @@
              } elseif(isset($_SESSION["adminID"])){
                 if($_SESSION["adminID"] == 1){
                 echo '<button onclick="location.href= \'../video/video_catalog.php\';"> VIDEO CATALOG </button>';
-                echo '<button onclick="location.href = \'../profile/profile.php\';"> SETTINGS </button>';
                 echo '<button onclick="location.href = \'../reports/reports.php\';"> REPORTS </button>';
                 echo '<button onclick="location.href = \'../log_in/logout.inc.php\';"> LOGOUT </button>';
                 }

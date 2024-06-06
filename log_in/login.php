@@ -1,4 +1,12 @@
-<?php include_once "../home/header.php" ?>
+<?php include_once "../home/header.php";
+
+echo '<pre>';
+print_r($_SESSION['userList']);
+echo '</pre>';
+
+
+
+?>
 
 <div class="logIN card" style="width: 400px; margin: 150px auto;">
     <div class="card-header">
@@ -7,7 +15,7 @@
     <form action="login.inc.php" method="post">
         <div class="card-body">
             <div class="form-group">
-                <label for=""> Enter Email or Username: </label>
+                <label for=""> Enter Email: </label>
                 <input class="form-control" type="text" name="user_name" required>
             </div>
             <div class="form-group">

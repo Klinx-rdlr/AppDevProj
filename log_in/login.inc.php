@@ -12,11 +12,13 @@
         $name = $_POST["user_name"];
         $password = $_POST["password"];
 
-        $userName = getUserName($name);
+        $email = getEmail($name); //can be seen at login_functions.php
+        $username = getUsername($name);//can be seen at login_functions.php
         $result = loginUser($name, $password); // can be seen at login_functions.php
 
         if($result){
-            $_SESSION["username"] = $userName;
+            $_SESSION["username"] = $email;
+            $_SESSION["user"] = $username;
             $_SESSION['user_activity'][] = new UserActivity($userName, "Logged In", date("Y-m-d h:i:sa"));
             header("location: ../home/index.php?error=none");
             exit();

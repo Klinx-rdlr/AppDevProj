@@ -1,7 +1,7 @@
 <?php 
     require_once('video.classes.php');
     require_once('../admin_logs/admin_action.classes.php');
-    session_start();
+    include_once  "../home/header.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $index = $_GET["index"];
@@ -34,24 +34,31 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Video</title>
-</head>
 <body>
-    <?php  
-        $video = $_SESSION['video_collection'][$index];
-        echo "<p> Are you sure you want to delete the video: <b>" . $video->get_title() . "</b>?</p>";
-    ?>
 
-    
-    <form action="" method="post">
-        <input type="hidden" name="action" value="delete">
-        <input type="hidden" name="index" value="<?php echo $_GET["index"]?>">
-        <button type="submit" value="Confirm Delete"> Confirm Delete </button>
-    </form>
+    <div class="card mt-4" style="margin: auto; width: 500px;">
+        <div class="card-header">
+            <p class="p-0 mt-1 mb-0 text-center" style="font-size: 22px;"> DELETE VIDEO</p>
+        </div>
+        <div class="card-body">
+            <?php  
+        $video = $_SESSION['video_collection'][$index];
+        echo "<p class='text-center'> Are you sure you want to delete the video: <b>" . $video->get_title() . "</b>?</p>";
+      ?>
+            <form action="" method="post">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="index" value="<?php echo $_GET["index"]?>">
+
+        </div>
+
+        <div class="card-footer">
+            <button class="btn btn-block btn-dark" type="submit" value="Confirm Delete"> Confirm Delete </button>
+            </form>
+
+        </div>
+    </div>
+
+
 </body>
+
 </html>

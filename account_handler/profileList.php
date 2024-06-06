@@ -19,7 +19,6 @@ function addNewProfile($userID){
         'Postal' => 0,
         'Phone Number' => "",
         'Birthday' => "",
-        'VideosRented' => ""
     );
     $_SESSION["profileList"][$userID] = $newProfile;
 }
@@ -41,7 +40,6 @@ function editProfile($status, $firstName, $lastName, $middleName,
         'Postal' => $postal,   
         'Phone Number' => $phone_number,
         'Birthday' => $birthday,
-        'VideosRented'=> "",
     );
 
     $_SESSION["profileList"][$_SESSION["userID"]] = $newProfile;
