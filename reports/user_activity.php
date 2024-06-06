@@ -37,10 +37,17 @@
                 <th class="bg-dark">Activity</th>
                 <th class="bg-dark">Date & Time</th>
             </tr>
-            <?php foreach($_SESSION["user_activity"] as $activity): ?>
+            <?php foreach($_SESSION["user_activity"] as $index => $activity): ?>
             <tr>
                 <td><?php echo $activity->get_user(); ?></td>
-                <td><?php echo $activity->get_activity(); ?></td>
+                
+                <td>
+                    <?php if ($activity->get_activity() == "Rented Video"): ?>
+                    <a href="rent_details.php?index=<?php echo $index; ?>"> <?php echo $activity->get_activity(); ?> </a>
+                    <?php else: ?> 
+                    <?php echo $activity->get_activity(); ?>
+                    <?php endif; ?>
+                </td>
                 <td><?php echo $activity->get_date_time(); ?></td>
             </tr>
             <?php endforeach; ?>

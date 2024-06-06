@@ -87,7 +87,9 @@
                             <td> <?php echo $videos->get_blu_ray(); ?> </td>
                             <td> <?php echo $videos->get_uhd(); ?> </td>
                             <td> <?php echo $videos->get_digital(); ?> </td>
-                            <td> <a href="update_video.php?index=<?php echo $index; ?>"> Edit </a>
+
+                            <!-- EDIT VIDEO TEST -->
+                            <td> <a href="edit_video_test.php?index=<?php echo $index; ?>"> Edit </a>
                                 <a class="ml-1" href="delete_video.php?index=<?php echo $index; ?>"> Delete
                             </td>
                         </tr>

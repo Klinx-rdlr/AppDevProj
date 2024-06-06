@@ -4,6 +4,7 @@ require_once "../rent/rent.classes.php";
 require_once "../rent/VideoItem.classes.php";
 require_once "../profile/purchase/purchase.classes.php";
 require_once "checkout_functions.php";
+require_once "../user_activity/user_activity.classes.php";
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -52,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $movieHistory =  $_SESSION['profileList'][$userID]['History'];
                 $videosRented =  $_SESSION['profileList'][$userID]['VideosRented'];
 
+                $rent_details = ""; 
+                
                 foreach ($currentCart as $item) {
                     $dvd = isset($item['Item']['DVD']['Quantity']) ? $item['Item']['DVD']['Quantity'] : 0;
                     $uhd = isset($item['Item']['UDH']['Quantity']) ? $item['Item']['UDH']['Quantity'] : 0;
@@ -65,8 +68,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $_SESSION['profileList'][$userID]['History'][] =  $newHistory;
 
                     $videosRented->addRentVideo($newVideo);
+
+                    $rent_details .= 
+                        "Title:  " . $item['Title'] . "<br>" .
+                        "Duration:  " . $item['Duration'] . " day/s<br>" .
+                        ($dvd > 0 ? "DVD: x$dvd" : "") . "<br>" .
+                        ($bluray > 0 ? "Blu-ray: x$bluray" : "") . "<br>" .
+                        ($uhd > 0 ? "UHD: x$uhd" : "") . "<br>" .
+                        ($digital > 0 ? "Digital: x$digital" : "") . "<br>";
+    
+    
                 }
 
+                
+                $_SESSION['user_activity'][] = new UserActivity($_SESSION["username"], "Rented Video", date("Y-m-d h:i:sa"), $rent_details);
                 // Save the updated profileList back to the session
                 $_SESSION['profileList'][$userID]['VideosRented'] = $videosRented;
 
@@ -106,6 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
             $videosRented =  $_SESSION['profileList'][$userID]['VideosRented'];
             
+            $rent_details = ""; 
+
             foreach ($currentCart as $item) {
                 $dvd = isset($item['Item']['DVD']['Quantity']) ? $item['Item']['DVD']['Quantity'] : 0;
                 $uhd = isset($item['Item']['UDH']['Quantity']) ? $item['Item']['UDH']['Quantity'] : 0;
@@ -114,7 +131,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 $newVideo = new rent($item['Title'], $item['Duration'], new VideoItem($dvd, $uhd, $digital, $bluray));
                 $videosRented->addRentVideo($newVideo);
+
+                $rent_details .= 
+                        "Title:  " . $item['Title'] . "<br>" .
+                        "Duration:  " . $item['Duration'] . " day/s<br>" .
+                        ($dvd > 0 ? "DVD: x" : "") . $dvd . "<br>" .
+                        ($bluray > 0 ? "Blu-ray: x" : "") . $bluray . "<br>" .
+                        ($uhd > 0 ? "UHD: x" : "") . $uhd . "<br>" .
+                        ($digital > 0 ? "Digital: x" : "") . $digital . "<br>";
+                       
+    
             }
+
+            $_SESSION['user_activity'][] = new UserActivity($_SESSION["username"], "Rented Video", date("Y-m-d h:i:sa"), $rent_details);
+            
+      
             // Save the updated profileList back to the session
             $_SESSION['profileList'][$userID]['VideosRented'] = $videosRented;
             unset($_SESSION['cartList'][$userID]);

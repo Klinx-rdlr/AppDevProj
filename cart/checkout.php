@@ -112,7 +112,6 @@ echo "</pre>";
                 <td>
                     <form action="checkout.php" method="post">
                         <select class="form-select" name='payment_option'>
-                            <option> ---Options--- </option>
                             <option value="cash"
                                 <?php if (isset($_POST['payment_option']) &&  $_POST['payment_option'] == "cash") echo 'selected' ?>>
                                 Cash </option>

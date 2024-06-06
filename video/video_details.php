@@ -110,7 +110,12 @@
         }
     ?>
 
-    <?php if (!$video->is_available()): ?>
+    <?php if (isset($_SESSION["adminID"])): ?> 
+        <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
+            onclick="location.href='update_video.php?index=<?php echo $index; ?>'" type="button">
+            Edit Video
+        </button> <br>
+    <?php elseif (!$video->is_available()): ?>
         <button class="btn btn-block rounded-pill px-3" style="background-color:red; width: 200px; margin-left: 750px"
             type="button">
             Rent Not Available
