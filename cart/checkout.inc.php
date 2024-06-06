@@ -7,6 +7,7 @@ require_once "checkout_functions.php";
 require_once "../user_activity/user_activity.classes.php";
 session_start();
 
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $total = intval($_POST['total']);
     $duration = $_POST['duration'];
@@ -50,6 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $_SESSION['profileList'][$userID]['History'] = array();
                 }
 
+                if (!isset($_SESSION["video_revenue"])) {
+                    $_SESSION["video_revenue"] = array();
+                 
+                }
+                
+               
                 $movieHistory =  $_SESSION['profileList'][$userID]['History'];
                 $videosRented =  $_SESSION['profileList'][$userID]['VideosRented'];
 
@@ -57,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 
                 foreach ($currentCart as $item) {
                     $dvd = isset($item['Item']['DVD']['Quantity']) ? $item['Item']['DVD']['Quantity'] : 0;
-                    $uhd = isset($item['Item']['UDH']['Quantity']) ? $item['Item']['UDH']['Quantity'] : 0;
+                    $uhd = isset($item['Item']['UDH']['Quantity']) ? $item['Item']['UHD']['Quantity'] : 0;
                     $digital = isset($item['Item']['Digital']['Quantity']) ? $item['Item']['Digital']['Quantity'] : 0;
                     $bluray = isset($item['Item']['Blu-ray']['Quantity']) ? $item['Item']['Blu-ray']['Quantity'] : 0;
                     
@@ -68,7 +75,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $_SESSION['profileList'][$userID]['History'][] =  $newHistory;
 
                     $videosRented->addRentVideo($newVideo);
+                    
+                    $_SESSION["video_revenue"][$item['Title']] = array(
+                        "DVD" => 0, "Blu-ray" => 0, "UHD" => 0, "Digital" => 0
+                    );
 
+                    $_SESSION["video_revenue"][$item['Title']]["DVD"] += $dvd;
+                    $_SESSION["video_revenue"][$item['Title']]["Blu-ray"] += $bluray;
+                    $_SESSION["video_revenue"][$item['Title']]["UHD"] += $uhd;
+                    $_SESSION["video_revenue"][$item['Title']]["Digital"] += $digital;
+
+                  
                     $rent_details .= 
                         "Title:  " . $item['Title'] . "<br>" .
                         "Duration:  " . $item['Duration'] . " day/s<br>" .
@@ -121,16 +138,31 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
             $videosRented =  $_SESSION['profileList'][$userID]['VideosRented'];
             
+            if (!isset($_SESSION["video_revenue"])) {
+                $_SESSION["video_revenue"] = array();
+               
+            }
+
+
             $rent_details = ""; 
 
             foreach ($currentCart as $item) {
                 $dvd = isset($item['Item']['DVD']['Quantity']) ? $item['Item']['DVD']['Quantity'] : 0;
-                $uhd = isset($item['Item']['UDH']['Quantity']) ? $item['Item']['UDH']['Quantity'] : 0;
+                $uhd = isset($item['Item']['UDH']['Quantity']) ? $item['Item']['UHD']['Quantity'] : 0;
                 $digital = isset($item['Item']['Digital']['Quantity']) ? $item['Item']['Digital']['Quantity'] : 0;
                 $bluray = isset($item['Item']['Blu-ray']['Quantity']) ? $item['Item']['Blu-ray']['Quantity'] : 0;
 
                 $newVideo = new rent($item['Title'], $item['Duration'], new VideoItem($dvd, $uhd, $digital, $bluray));
                 $videosRented->addRentVideo($newVideo);
+
+                $_SESSION["video_revenue"][$item['Title']] = array(
+                    "DVD" => 0, "Blu-ray" => 0, "UHD" => 0, "Digital" => 0
+                );
+
+                $_SESSION["video_revenue"][$item['Title']]["DVD"] += $dvd;
+                $_SESSION["video_revenue"][$item['Title']]["Blu-ray"] += $bluray;
+                $_SESSION["video_revenue"][$item['Title']]["UHD"] += $uhd;
+                $_SESSION["video_revenue"][$item['Title']]["Digital"] += $digital;
 
                 $rent_details .= 
                         "Title:  " . $item['Title'] . "<br>" .

@@ -21,8 +21,7 @@ unset($_SESSION['username']);
 // unset($_SESSION['userList']);
 // unset($_SESSION['profileList']);
 // unset($_SESSION['cartList']);
-
-
+//unset($_SESSION['video_revenue']); 
 
 header("location: ../home/index.php");
 
