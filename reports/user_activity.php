@@ -40,11 +40,12 @@
             <?php foreach($_SESSION["user_activity"] as $index => $activity): ?>
             <tr>
                 <td><?php echo $activity->get_user(); ?></td>
-                
+
                 <td>
                     <?php if ($activity->get_activity() == "Rented Video"): ?>
-                    <a href="rent_details.php?index=<?php echo $index; ?>"> <?php echo $activity->get_activity(); ?> </a>
-                    <?php else: ?> 
+                    <a href="rent_details.php?index=<?php echo $index; ?>"> <?php echo $activity->get_activity(); ?>
+                    </a>
+                    <?php else: ?>
                     <?php echo $activity->get_activity(); ?>
                     <?php endif; ?>
                 </td>
@@ -53,7 +54,7 @@
             <?php endforeach; ?>
         </table>
         <?php endif; ?>
-        <a class="btn btn-block btn-dark" style="margin: auto; width: 120px;" href="reports.php">Back</a>
+        <a class="btn btn-block bg-olive mb-3" style="margin: auto; width: 120px;" href="reports.php">Go Back</a>
     </div>
 </body>
 

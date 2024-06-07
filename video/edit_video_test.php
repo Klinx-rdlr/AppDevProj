@@ -116,7 +116,8 @@
                     </div>
                     <div class="form-group">
                         <label for=""> Director:</label>
-                        <input type="text" id="director" name="director" required value="<?php echo $video->get_director();?>">
+                        <input type="text" id="director" name="director" required
+                            value="<?php echo $video->get_director();?>">
                     </div>
 
                     <div class="form-group">
@@ -129,7 +130,7 @@
                     <div class="form-group">
                         <label for="">
                             Starring: </label>
-                        <input type="text" id="starring" name="starring"  value="<?php echo $video->get_starring();?>">
+                        <input type="text" id="starring" name="starring" value="<?php echo $video->get_starring();?>">
                     </div>
 
                     <div class="form-group">
@@ -141,7 +142,8 @@
                     <div class="form-group">
                         <label for="">
                             Year Released: </label>
-                        <input type="text" id="year" name="year" minlength='4' maxlength='4' required value="<?php echo $video->get_release_year();?>">
+                        <input type="text" id="year" name="year" minlength='4' maxlength='4' required
+                            value="<?php echo $video->get_release_year();?>">
                     </div>
 
                     <div class="form-group">
@@ -153,7 +155,8 @@
                     <div class="form-group">
                         <label for="">
                             No. of Blu-rays: </label>
-                        <input type="number" id="blu_ray" name="blu_ray" required value="<?php echo $video->get_blu_ray();?>"> <br>
+                        <input type="number" id="blu_ray" name="blu_ray" required
+                            value="<?php echo $video->get_blu_ray();?>"> <br>
                     </div>
 
                     <div class="form-group">
@@ -165,7 +168,8 @@
                     <div class="form-group">
                         <label for="">
                             No. of Digital:</label>
-                        <input type="number" id="digital" name="digital" required value="<?php echo $video->get_digital();?>"> <br>
+                        <input type="number" id="digital" name="digital" required
+                            value="<?php echo $video->get_digital();?>"> <br>
                     </div>
 
                     <div class="form-group">
@@ -178,7 +182,7 @@
                 <div class="card-footer">
                     <input class="btn btn-block btn-dark" type="submit" value="Edit Video"
                         style="width: 500px; margin-left: 35px;">
-                    <button class="btn btn-block btn-dark" onclick="location.href='video_catalog.php'"
+                    <button class="btn btn-block bg-olive" onclick="location.href='video_catalog.php'"
                         style="width: 500px; margin-left: 35px;">Back to Video
                         Catalog </button>
                 </div>

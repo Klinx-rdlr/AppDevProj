@@ -6,43 +6,36 @@ if (!isset($_SESSION["video_revenue"])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Report</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
+    integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        th, td {
-            border: 1px solid black;
-            text-align: left;
-            padding: 8px;
-        }
-
-    </style>
-</head>
 <body>
-        <!-- <pre> <?php var_dump($_SESSION['video_revenue']); ?> </pre> -->
+    <div class="row mt-2" style="width: 800px; margin: auto;">
+        <canvas class="mt-5" id="barChart" height="200" width="700" style="border: 1px solid black"> </canvas>
+    </div>
+    <div class="row mt-3" style="width: 900px; margin: auto;">
+        <pre> <?php var_dump($_SESSION['video_revenue']); ?> </pre>
         <table>
-            <tr>
-                <th>Title</th>
-                <th>DVDs Sold</th>
-                <th>Blu-rays Sold</th>
-                <th>UHDs Sold</th>
-                <th>Digital Sold</th>
-                <th> Total Revenue </th>
-            </tr>
-            <?php foreach ($_SESSION['video_revenue'] as $title => $formats): ?> 
-                <?php $total_revenue = 0; ?>
+            <thead class="text-center">
+                <th class="bg-dark">Title</th>
+                <th class="bg-dark">DVDs Sold</th>
+                <th class="bg-dark">Blu-rays Sold</th>
+                <th class="bg-dark">UHDs Sold</th>
+                <th class="bg-dark">Digital Sold</th>
+                <th class="bg-dark"> Total Revenue </th>
+            </thead>
+            <?php
+            $movies = [];
+            $total_revenue = [];
+            foreach ($_SESSION['video_revenue'] as $title => $formats): 
+            $movies[] = $title?>
+            <?php $total_revenue = 0; ?>
+            <tbody class="text-center">
                 <tr>
                     <td><?php echo $title ?></td>
                     <?php foreach ($formats as $format => $quantity): ?>
-                        <?php 
+                    <?php 
                             if ($format == "DVD") {
                                 $total_revenue += $quantity * 49.99;
                             } elseif ($format == "Blu-ray") {
@@ -53,12 +46,16 @@ if (!isset($_SESSION["video_revenue"])) {
                                 $total_revenue += $quantity * 99.99;
                             }
                         ?>
-                        <td><?php echo $quantity ?></td>
+                    <td><?php echo $quantity ?></td>
                     <?php endforeach; ?>
                     <td> ₱<?php echo $total_revenue; ?> </td>
                 </tr>
-            <?php endforeach; ?>
-
+                <?php $movie_revenue[] = endforeach; ?>
+            </tbody>
         </table>
+    </div>
+    <script src="financial_reports.js"></script>
 </body>
+
+
 </html>

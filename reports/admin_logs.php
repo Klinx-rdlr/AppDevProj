@@ -24,7 +24,7 @@
             </tr>
             <?php endforeach; ?>
         </table>
-        <a class="btn btn-block btn-dark" style="margin: auto; width: 120px;" href="reports.php">Back</a>
+        <a class="btn btn-block bg-olive" style="margin: auto; width: 120px;" href="reports.php">Go Back</a>
     </div>
 
 </body>

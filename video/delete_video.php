@@ -54,6 +54,8 @@
         <div class="card-footer">
             <button class="btn btn-block btn-dark" type="submit" value="Confirm Delete"> Confirm Delete </button>
             </form>
+            <button class="btn btn-block bg-olive" onclick="location.href='/appdevproj/video/video_catalog.php'"> Go
+                Back </button>
 
         </div>
     </div>

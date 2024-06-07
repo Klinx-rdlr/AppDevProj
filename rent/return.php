@@ -35,7 +35,7 @@ if(isset($_GET['index'])){
     <form action="return.inc.php" method="post">
         <div class="card-footer">
             <input type="hidden" name="index" value="<?php echo $index ?>">
-            <input class="btn btn-block btn-dark" type="submit" value="Return">
+            <input class="btn btn-block btn-danger" type="submit" value="Return">
         </div>
     </form>
 </div>

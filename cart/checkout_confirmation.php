@@ -15,7 +15,7 @@ include_once "../home/header.php";
 
         </div>
         <div class="form-group">
-            <button class="btn btn-block btn-dark" onclick="location.href = '/appdevproj/home/index.php'"> Continue
+            <button class="btn btn-block bg-olive" onclick="location.href = '/appdevproj/home/index.php'"> Continue
             </button>
         </div>
     </div>

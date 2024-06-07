@@ -136,7 +136,9 @@ echo "</pre>";
                         <input type="hidden" name="total" value="<?php echo $total; ?>">
                         <input type="hidden" name="duration" value="<?php echo $duration; ?>">
                         <input type="hidden" name="purchase_date" value="<?php echo date("Y-m-d"); ?>">
+                        <?php if(isset($_POST['payment_option'])): ?>
                         <input type="hidden" name="payment_option" value="<?php echo $_POST['payment_option']; ?>">
+                        <?php endif; ?>
 
                         <?php if(isset($_POST['payment_option']) && $_POST['payment_option'] == "cash" ): ?>
                         <label for=""> Amount: </label>

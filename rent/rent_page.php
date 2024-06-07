@@ -6,9 +6,9 @@ $title = $_SESSION['video_collection'][$index]->get_title();
 
 //for debugging use
 
-echo "<pre>";
-print_r($_SESSION["cartList"][$_SESSION['userID']]);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION["cartList"][$_SESSION['userID']]);
+// echo "</pre>";
 
 
 ?>

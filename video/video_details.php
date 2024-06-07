@@ -24,8 +24,8 @@
 .img-container {
     margin-top: 17px;
     margin-left: 100px;
-    height: 450px;
-    width: 350px;
+    height: 420px;
+    width: 320px;
 }
 </style>
 
@@ -48,15 +48,15 @@
                             <div class="row" style="border: 1px solid black; background-color: #333333;">
                                 <div class="d-flex title align-items-center">
                                     <h6 class="low-title ml-4" style="padding: 0px;"> GENRE: </h6>
-                                    <h3 class="ml-3"> <?php echo $video->get_genre(); ?> </h3>
+                                    <h5 class="ml-3 low-title"> <?php echo $video->get_genre(); ?> </h3>
                                 </div>
                             </div>
                             <div class="row" style="border: 1px solid black; background-color: #4F4F4F;">
                                 <div class="second-title d-flex align-items-center">
                                     <h6 class="low-title ml-4" style="padding: 0"> DIRECTOR: </h6>
-                                    <h3 class="ml-3">
+                                    <h5 class="ml-3 low-title">
                                         <?php echo $video->get_director(); ?>
-                                    </h3>
+                                        </h3>
                                 </div>
                             </div>
                             <div class="row d-flex align-items-center"
@@ -64,13 +64,13 @@
                                 <div class="second-title d-flex flex-column">
                                     <div class="d-flex align-items-center ">
                                         <h6 class="low-title ml-4" style="padding: 0"> TITLE: </h6>
-                                        <p class="ml-4" style="font-size: 49px;">
+                                        <p class="ml-4 low-title" style="font-size: 40px;">
                                             <?php echo $video->get_title(); ?>
                                         </p>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <h6 class="low-title ml-4" style="padding: 0"> STARRING: </h6>
-                                        <p class="ml-2" style="font-size: 38px;">
+                                        <p class="ml-2 low-title" style="font-size: 30px;">
                                             <?php echo $video->get_starring(); ?>
                                         </p>
                                     </div>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 bg-dark" style="border: 1px solid black">
+                        <div class="col-6 bg-dark p-0" style="border: 1px solid black; height: 467px; width: 530px;">
                             <div class="thumbnail">
                                 <img class="img-container" src="<?php echo $video->get_thumbnail(); ?>" alt="Thumbnail">
                             </div>
@@ -110,21 +110,21 @@
         }
     ?>
 
-    <?php if (isset($_SESSION["adminID"])): ?> 
-        <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
-            onclick="location.href='update_video.php?index=<?php echo $index; ?>'" type="button">
-            Edit Video
-        </button> <br>
+    <?php if (isset($_SESSION["adminID"])): ?>
+    <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
+        onclick="location.href='update_video.php?index=<?php echo $index; ?>'" type="button">
+        Edit Video
+    </button> <br>
     <?php elseif (!$video->is_available()): ?>
-        <button class="btn btn-block rounded-pill px-3" style="background-color:red; width: 200px; margin-left: 750px"
-            type="button">
-            Rent Not Available
-        </button> <br>
+    <button class="btn btn-block rounded-pill px-3" style="background-color:red; width: 200px; margin-left: 750px"
+        type="button">
+        Rent Not Available
+    </button> <br>
     <?php else: ?>
-        <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
-            onclick="location.href='<?php echo $location; ?>'" type="button">
-            Rent
-        </button> <br>
+    <button class="btn btn-block btn-dark  rounded-pill px-3" style="width: 200px; margin-left: 750px"
+        onclick="location.href='<?php echo $location; ?>'" type="button">
+        Rent
+    </button> <br>
     <?php endif; ?>
     <button class="btn btn-light rounded-pill px-3 mt-3" style="width: 200px; margin-left: 750px"
         onclick="location.href='../home/index.php'"> Return Home </button>

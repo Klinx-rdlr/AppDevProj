@@ -150,7 +150,7 @@
                 <div class="card-footer">
                     <input class="btn btn-block btn-dark" type="submit" value="Add Video"
                         style="width: 500px; margin-left: 35px;">
-                    <button class="btn btn-block btn-dark" onclick="location.href='video_catalog.php'"
+                    <button class="btn btn-block bg-olive" onclick="location.href='video_catalog.php'"
                         style="width: 500px; margin-left: 35px;">Back to Video
                         Catalog </button>
                 </div>

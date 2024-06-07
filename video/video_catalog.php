@@ -96,7 +96,7 @@
                         <?php endforeach; ?>
                     </table>
                     <?php else: ?>
-                    <p class="mt-2 p-0"> No Videos Available </p>
+                    <p class="mt-2 p-0 text-center" style="color: red;"> No Videos Available </p>
                     <?php endif; ?>
                 </div>
 
