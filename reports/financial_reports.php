@@ -15,8 +15,8 @@ if (!isset($_SESSION["video_revenue"])) {
         <canvas class="mt-5" id="barChart" height="200" width="700" style="border: 1px solid black"> </canvas>
     </div>
     <div class="row mt-3" style="width: 900px; margin: auto;">
-        <pre> <?php var_dump($_SESSION['video_revenue']); ?> </pre>
-        <table>
+        <!-- <pre> <?php var_dump($_SESSION['video_revenue']); ?> </pre> -->
+        <table class="table table-bordered">
             <thead class="text-center">
                 <th class="bg-dark">Title</th>
                 <th class="bg-dark">DVDs Sold</th>
@@ -27,7 +27,7 @@ if (!isset($_SESSION["video_revenue"])) {
             </thead>
             <?php
             $movies = [];
-            $total_revenue = [];
+            $movies_revenue = [];
             foreach ($_SESSION['video_revenue'] as $title => $formats): 
             $movies[] = $title?>
             <?php $total_revenue = 0; ?>
@@ -50,10 +50,20 @@ if (!isset($_SESSION["video_revenue"])) {
                     <?php endforeach; ?>
                     <td> ₱<?php echo $total_revenue; ?> </td>
                 </tr>
-                <?php $movie_revenue[] = endforeach; ?>
+                <?php $movies_revenue[] = $total_revenue;
+             endforeach; ?>
             </tbody>
         </table>
     </div>
+    <!-- <input id="movies" type="hidden" value="<?php echo json_encode($movies); ?>">
+    <input id="movies_revenue" type="hidden" value="<?php echo json_encode($movies_revenue); ?>"> -->
+
+    <script>
+    var movies = <?php echo json_encode($movies); ?>;
+    var moviesRevenue = <?php echo json_encode($movies_revenue); ?>;
+    </script>
+
+
     <script src="financial_reports.js"></script>
 </body>
 

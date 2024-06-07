@@ -1,18 +1,20 @@
 const ctz = document.getElementById("barChart");
+// const moviesInput = document.getElementById("movies");
+// const moviesRevenueInput = document.getElementById("movies_revenue");
 
-console.log(ctz);
+// const movies = JSON.parse(moviesInput.value);
+// const moviesRevenue = JSON.parse(moviesRevenueInput.value);
+
 const canvas = ctz.getContext("2d");
-
-const labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // Note the array syntax
 
 const barChart = new Chart(canvas, {
   type: "bar",
   data: {
-    labels: labels,
+    labels: movies,
     datasets: [
       {
         label: "2024 Revenue Per Movie Report",
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: moviesRevenue,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",
